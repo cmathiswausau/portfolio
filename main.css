@@ -68,37 +68,52 @@ section {
    padding: 20px;
 }
 
-/* Aside */
+/* FIXED ASIDE */
 aside {
    position: absolute;
    right: 10px;
-   top: 10px;
-   width: 220px;
+   top: 20px;
+   width: 200px;
    background: white;
    padding: 15px;
    border-radius: 10px;
+}
+
+/* prevent text clipping */
+article {
+   margin-right: 240px;
 }
 
 aside h2 {
    color: yellow;
 }
 
+/* Aside text */
 .asideText {
    font-size: 0.75em;
    font-style: italic;
 }
 
-/* Footer */
+/* Footer FIXED */
 footer {
    clear: both;
    border: 1px solid gray;
    background-image: linear-gradient(#2f3e52, #3b4c63);
-   padding: 10px;
+   padding: 15px;
+   margin-top: 20px;
 }
 
-footer address {
+/* readable footer text */
+footer address,
+footer p {
    font-size: 0.75em;
    text-align: center;
+   color: white;
+}
+
+/* readable link */
+footer a {
+   color: #99b1db;
 }
 
 /* Table */
@@ -137,6 +152,10 @@ table.home td {
 
    section {
       margin-left: 0;
+   }
+
+   article {
+      margin-right: 0;
    }
 
    aside {
