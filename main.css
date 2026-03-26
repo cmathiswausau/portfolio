@@ -8,16 +8,15 @@
 
 /* ================= BODY ================= */
 body {
-   background-color: #e5e7eb; /* rgb(229,231,235) */
+   background-color: #e5e7eb;
    font-family: "Segoe UI", Arial, sans-serif;
-   line-height: 1.6;
-   color: #374151; /* rgb(55,65,81) */
+   color: #374151;
 }
 
 /* ================= HEADER ================= */
 header {
-   background-color: #4f6482; /* rgb(79,100,130) */
-   color: #ffffff; /* rgb(255,255,255) */
+   background-color: #4f6482;
+   color: #ffffff;
    padding: 15px;
    border-radius: 6px;
    margin-bottom: 15px;
@@ -25,8 +24,6 @@ header {
 
 header img {
    height: 60px;
-   display: block;
-   margin-bottom: 8px;
 }
 
 h1 {
@@ -34,21 +31,20 @@ h1 {
    margin: 0;
 }
 
-/* HEADINGS */
 h2 {
-   background-color: #99b1db; /* rgb(153,177,219) */
-   color: #2f3e52; /* rgb(47,62,82) */
+   background-color: #99b1db;
+   color: #2f3e52;
    padding: 6px 10px;
    border-radius: 4px;
 }
 
-/* ================= NAV ================= */
+/* ================= NAV (FIXED) ================= */
 nav {
    float: left;
    width: 160px;
-   background-color: #99b1db; /* rgb(153,177,219) */
-   padding: 10px;
-   border-radius: 6px;
+   background-color: #7c93b5; /* darker for contrast */
+   padding: 12px;
+   border-radius: 8px;
 }
 
 nav ul {
@@ -59,19 +55,20 @@ nav ul {
 nav a {
    display: block;
    padding: 10px;
-   color: #1f2937; /* rgb(31,41,55) */
+   color: #1f2937; /* DARK text now */
    text-decoration: none;
-   border-radius: 4px;
+   border-radius: 6px;
    font-weight: bold;
+   background-color: rgba(255, 255, 255, 0.4); /* contrast layer */
 }
 
-/* NAV HOVER */
+/* hover */
 nav a:hover {
-   background-color: #2f3e52; /* rgb(47,62,82) */
+   background-color: #2f3e52;
    color: #ffffff;
 }
 
-/* ACTIVE PAGE */
+/* active */
 nav a.active {
    background-color: #2f3e52;
    color: #ffffff;
@@ -86,7 +83,6 @@ section {
    border-radius: 6px;
 }
 
-/* TEXT */
 section p {
    color: #374151;
 }
@@ -95,10 +91,9 @@ article p {
    color: #1f2937;
 }
 
-/* LIST */
+/* list */
 section ul {
    list-style-type: square;
-   padding-left: 20px;
 }
 
 /* ================= ASIDE ================= */
@@ -112,41 +107,33 @@ aside {
    border-radius: 10px;
 }
 
-/* prevent overlap */
 article {
    margin-right: 240px;
 }
 
-/* ASIDE HEADING (DIFFERENT STYLE) */
 aside h2 {
    background-color: #2f3e52;
    color: #ffffff;
    padding: 8px;
-   border-radius: 4px;
 }
 
-/* ASIDE TEXT */
 .asideText {
    font-size: 0.75em;
    font-style: italic;
-   color: #374151;
 }
 
 /* ================= LINKS ================= */
 a:link {
-   color: #1d4ed8; /* rgb(29,78,216) */
+   color: #1d4ed8;
 }
-
 a:visited {
-   color: #6b7280; /* rgb(107,114,128) */
+   color: #6b7280;
 }
-
 a:hover {
-   color: #2563eb; /* rgb(37,99,235) */
+   color: #2563eb;
 }
-
 a:active {
-   color: #1e40af; /* rgb(30,64,175) */
+   color: #1e40af;
 }
 
 /* ================= FOOTER ================= */
@@ -154,12 +141,11 @@ footer {
    clear: both;
    border: 1px solid #9ca3af;
    background-image: linear-gradient(#2f3e52, #3b4c63);
-   padding: 15px;
+   padding: 20px;
    margin-top: 20px;
    border-radius: 6px;
 }
 
-/* FOOTER TEXT */
 footer address,
 footer p {
    font-size: 0.75em;
@@ -167,7 +153,7 @@ footer p {
    color: #ffffff;
 }
 
-/* FOOTER LINKS */
+/* footer link */
 footer a {
    color: #99b1db;
 }
@@ -177,30 +163,21 @@ footer a:hover {
 }
 
 /* ================= TABLE ================= */
-/* Table styles (requirement #38) */
 table.home {
    width: 100%;
    border-collapse: collapse;
    border: 1px solid #9ca3af;
-   margin-top: 15px;
 }
 
 table.home th {
    background-color: #99b1db;
    color: #2f3e52;
-   padding: 8px;
 }
 
 table.home td {
-   color: #2f3e52;
    padding: 10px;
    border: 1px solid #9ca3af;
-}
-
-table.home caption {
-   font-weight: bold;
    color: #2f3e52;
-   margin-bottom: 5px;
 }
 
 /* ================= MOBILE ================= */
@@ -214,7 +191,6 @@ table.home caption {
    nav {
       float: none;
       width: 100%;
-      margin-bottom: 10px;
    }
 
    nav ul {
