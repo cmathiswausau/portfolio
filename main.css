@@ -1,214 +1,25 @@
-/* Main StyleSheet for Portfolio Project - Chris Mathis - March 2026 */
-
-/* ================= WRAP ================= */
-#wrap {
-   width: 960px;
-   margin: 20px auto;
-}
-
-/* ================= BODY ================= */
-body {
-   background-color: #e5e7eb;
-   font-family: "Segoe UI", Arial, sans-serif;
-   color: #374151;
-}
-
-/* ================= HEADER ================= */
-header {
-   background-color: #4f6482;
-   color: #ffffff;
-   padding: 15px;
-   border-radius: 6px;
-   margin-bottom: 15px;
-}
-
-header img {
-   height: 60px;
-}
-
-h1 {
-   font-size: 1.5em;
-   margin: 0;
-}
-
-h2 {
-   background-color: #99b1db;
-   color: #2f3e52;
-   padding: 6px 10px;
-   border-radius: 4px;
-}
-
-/* ================= NAV (FIXED) ================= */
-nav {
-   float: left;
-   width: 160px;
-   background-color: #7c93b5; /* darker for contrast */
-   padding: 12px;
-   border-radius: 8px;
-}
-
-nav ul {
-   list-style-type: none;
-   padding: 0;
-}
-
-nav a {
-   display: block;
-   padding: 10px;
-   color: #1f2937; /* DARK text now */
-   text-decoration: none;
-   border-radius: 6px;
-   font-weight: bold;
-   background-color: rgba(255, 255, 255, 0.4); /* contrast layer */
-}
-
-/* hover */
-nav a:hover {
-   background-color: #2f3e52;
-   color: #ffffff;
-}
-
-/* active */
-nav a.active {
-   background-color: #2f3e52;
-   color: #ffffff;
-}
-
-/* ================= SECTION ================= */
-section {
-   position: relative;
-   margin-left: 180px;
-   padding: 20px;
-   background-color: #ffffff;
-   border-radius: 6px;
-}
-
-section p {
-   color: #374151;
-}
-
-article p {
-   color: #1f2937;
-}
-
-/* list */
-section ul {
-   list-style-type: square;
-}
-
-/* ================= ASIDE ================= */
-aside {
-   position: absolute;
-   right: 10px;
-   top: 20px;
-   width: 200px;
-   background: #ffffff;
-   padding: 15px;
-   border-radius: 10px;
-}
-
-article {
-   margin-right: 240px;
-}
-
-aside h2 {
-   background-color: #2f3e52;
-   color: #ffffff;
-   padding: 8px;
-}
-
-.asideText {
-   font-size: 0.75em;
-   font-style: italic;
-}
-
-/* ================= LINKS ================= */
-a:link {
-   color: #1d4ed8;
-}
-a:visited {
-   color: #6b7280;
-}
-a:hover {
-   color: #2563eb;
-}
-a:active {
-   color: #1e40af;
-}
-
-/* ================= FOOTER ================= */
-footer {
-   clear: both;
-   border: 1px solid #9ca3af;
-   background-image: linear-gradient(#2f3e52, #3b4c63);
-   padding: 20px;
-   margin-top: 20px;
-   border-radius: 6px;
-}
-
-footer address,
-footer p {
-   font-size: 0.75em;
-   text-align: center;
-   color: #ffffff;
-}
-
-/* footer link */
-footer a {
-   color: #99b1db;
-}
-
-footer a:hover {
-   color: #ffffff;
-}
-
-/* ================= TABLE ================= */
-table.home {
-   width: 100%;
-   border-collapse: collapse;
-   border: 1px solid #9ca3af;
-}
-
-table.home th {
-   background-color: #99b1db;
-   color: #2f3e52;
-}
-
-table.home td {
-   padding: 10px;
-   border: 1px solid #9ca3af;
-   color: #2f3e52;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-   #wrap {
-      width: 100%;
-      margin: 0;
-      padding: 10px;
-   }
-
-   nav {
-      float: none;
-      width: 100%;
-   }
-
-   nav ul {
-      display: flex;
-      justify-content: space-around;
-   }
-
-   section {
-      margin-left: 0;
-   }
-
-   article {
-      margin-right: 0;
-   }
-
-   aside {
-      position: static;
-      width: 100%;
-      margin-top: 15px;
-   }
+/* Final CSS */
+#wrap { width:960px; margin:20px auto; }
+body { background:#E5E7EB; font-family:Segoe UI, Arial; color:#374151; }
+header { background:#4F6482; color:#fff; padding:15px; border-radius:6px; }
+header img { height:60px; }
+h1 { font-size:1.5em; margin:0; }
+h2 { background:#99B1DB; color:#2F3E52; padding:6px; }
+nav { float:left; width:160px; background:#7C93B5; padding:10px; }
+nav ul { list-style:none; padding:0; }
+nav a { display:block; padding:10px; background:rgba(255,255,255,0.4); color:#1F2937; text-decoration:none; }
+nav a:hover, nav a.active { background:#2F3E52; color:#fff; }
+section { margin-left:180px; padding:20px; background:#fff; }
+aside { position:absolute; right:10px; top:20px; width:200px; background:#fff; padding:10px; }
+article { margin-right:220px; }
+footer { clear:both; margin-top:20px; padding:15px; background:linear-gradient(#2F3E52,#3B4C63); color:#fff; }
+footer address, footer p { text-align:center; font-size:.75em; }
+table.home { width:100%; border-collapse:collapse; }
+table.home td, table.home th { border:1px solid #9CA3AF; padding:8px; }
+@media (max-width:768px){
+#wrap{width:100%}
+nav{float:none;width:100%}
+section{margin-left:0}
+aside{position:static;width:100%}
+article{margin-right:0}
 }
