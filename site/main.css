@@ -1,0 +1,28 @@
+/* Final Production CSS - Chris Mathis */
+#wrap{width:960px;margin:20px auto;}
+body{background:#E5E7EB;font-family:Segoe UI,Arial;color:#374151;line-height:1.6;}
+header{background:#4F6482;color:#fff;padding:15px;border-radius:6px;margin-bottom:15px;}
+header img{height:60px;display:block;margin-bottom:8px;}
+h1{font-size:1.5em;margin:0;}
+h2{background:#99B1DB;color:#2F3E52;padding:6px 10px;border-radius:4px;}
+nav{float:left;width:180px;background:#7C93B5;padding:12px;border-radius:8px;}
+nav ul{list-style:none;padding:0;margin:0;}
+nav a{display:block;padding:10px;color:#1F2937;text-decoration:none;border-radius:6px;font-weight:bold;background:rgba(255,255,255,0.4);}
+nav a:hover,nav a.active{background:#2F3E52;color:#fff;}
+section{position:relative;margin-left:200px;padding:20px;background:#fff;border-radius:6px;}
+aside{position:absolute;right:10px;top:20px;width:220px;background:#fff;padding:15px;border-radius:10px;}
+article{margin-right:260px;}
+.asideText{font-size:.75em;font-style:italic;}
+footer{clear:both;border:1px solid #9CA3AF;background:linear-gradient(#2F3E52,#3B4C63);padding:15px;margin-top:20px;border-radius:6px;}
+footer address,footer p{text-align:center;color:#fff;font-size:.75em;}
+table.home{width:100%;border-collapse:collapse;border:1px solid #9CA3AF;margin-top:15px;}
+table.home th{background:#99B1DB;color:#2F3E52;padding:8px;}
+table.home td{padding:10px;border:1px solid #9CA3AF;color:#2F3E52;}
+@media(max-width:768px){
+#wrap{width:100%;margin:0;padding:10px;}
+nav{float:none;width:100%;}
+nav ul{display:flex;justify-content:space-around;}
+section{margin-left:0;}
+article{margin-right:0;}
+aside{position:static;width:100%;margin-top:15px;}
+}
