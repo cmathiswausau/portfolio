@@ -1,16 +1,36 @@
-name: Deploy to Azure Static Web Apps
+name: Deploy to Azure Storage ($web)
+
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+
 jobs:
-  build_and_deploy:
+  deploy:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: Azure/static-web-apps-deploy@v1
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Clear existing files
+        uses: azure/CLI@v2
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
-          app_location: "site"
-          output_location: ""
+          inlineScript: |
+            az storage blob delete-batch \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
+              --source '$web'
+
+      - name: Upload to Azure Blob Storage
+        uses: azure/CLI@v2
+        with:
+          inlineScript: |
+            az storage blob upload-batch \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
+              --destination '$web' \
+              --source site \
+              --overwrite
