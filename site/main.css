@@ -129,8 +129,7 @@ footer {
       linear-gradient(rgba(47, 62, 82, 0.92), rgba(47, 62, 82, 0.92)),
       url("footer-bg.png");
 
-   background-size: auto 100%;     /* full height, natural width */
-   background-repeat: repeat-x;    /* repeat ONLY horizontally */
+   background-size: 100% 100%;
    background-position: center;
 
    padding: 20px;
