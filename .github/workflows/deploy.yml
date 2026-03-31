@@ -15,15 +15,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Clear existing files
-        uses: azure/CLI@v2
-        with:
-          inlineScript: |
-            az storage blob delete-batch \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --source '$web'
-
       - name: Upload to Azure Blob Storage
         uses: azure/CLI@v2
         with:
