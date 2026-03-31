@@ -21,6 +21,18 @@ body {
 
 /* Header Styles */
 
+h1 {
+   font-size: 1.5em;
+   margin: 0;
+}
+
+h2 {
+   background: #99b1db;
+   color: #2f3e52;
+   padding: 6px 10px;
+   border-radius: 4px;
+}
+
 header {
    background: #4f6482;
    color: #fff;
@@ -33,18 +45,6 @@ header img {
    height: 60px;
    display: block;
    margin-bottom: 8px;
-}
-
-h1 {
-   font-size: 1.5em;
-   margin: 0;
-}
-
-h2 {
-   background: #99b1db;
-   color: #2f3e52;
-   padding: 6px 10px;
-   border-radius: 4px;
 }
 
 /* Nav Styles */
@@ -129,7 +129,8 @@ footer {
       linear-gradient(rgba(47, 62, 82, 0.92), rgba(47, 62, 82, 0.92)),
       url("footer-bg.png");
 
-   background-size: cover;
+   background-size: auto 100%;     /* full height, natural width */
+   background-repeat: repeat-x;    /* repeat ONLY horizontally */
    background-position: center;
 
    padding: 20px;
@@ -139,6 +140,7 @@ footer {
    /* 🔥 adds depth */
    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
 }
+
 footer address {
    text-align: left;
    line-height: 1.5;
