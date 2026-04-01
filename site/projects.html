@@ -20,6 +20,7 @@
         </header>
 
         <nav>
+            <button class="nav-toggle">☰</button>
             <ul>
                 <li><a href="index.html" title="Go to Home Page">Home</a></li>
                 <li><a href="projects.html" class="active" title="View My Projects">Projects</a></li>
@@ -133,6 +134,11 @@
         </footer>
 
     </div>
+    <script>
+        document.querySelector(".nav-toggle").addEventListener("click", function () {
+            document.querySelector("nav ul").classList.toggle("show");
+        });
+    </script>
 </body>
 
 </html>

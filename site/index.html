@@ -17,6 +17,7 @@
             <h2>Network Engineer | Software Developer</h2>
         </header>
         <nav>
+            <button class="nav-toggle">☰</button>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -79,6 +80,11 @@
             <p><a href="#top">Back To Top</a></p>
         </footer>
     </div>
+    <script>
+        document.querySelector(".nav-toggle").addEventListener("click", function () {
+            document.querySelector("nav ul").classList.toggle("show");
+        });
+    </script>
 </body>
 
 </html>
