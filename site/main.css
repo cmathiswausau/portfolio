@@ -35,7 +35,7 @@ h2 {
    color: #2f3e52;
    padding: 6px 10px;
    border-radius: 4px;
-   margin-top: 0; /* 🔥 ensures alignment */
+   margin-top: 0;
 }
 
 /* Header Styles */
@@ -45,7 +45,7 @@ header {
    color: #fff;
    padding: 15px;
    border-radius: 6px;
-   margin-bottom: 15px;
+   margin-bottom: 0;
 }
 
 header img {
@@ -60,12 +60,9 @@ nav {
    float: left;
    width: 160px;
    background: #7c93b5;
-   padding: 12px;
+   padding: 20px 12px 12px 12px;
+   margin-top: 10px;
    border-radius: 8px;
-
-   /* 🔥 ALIGNMENT FIX */
-   position: relative;
-   top: 15px;
 }
 
 nav ul {
@@ -95,13 +92,10 @@ nav a.active {
 section {
    position: relative;
    margin-left: 180px;
-
-   /* 🔥 MATCH NAV OFFSET */
-   margin-top: 15px;
-
    padding: 20px;
    background: #fff;
    border-radius: 6px;
+   top: 10px;
 }
 
 section ul {
@@ -117,10 +111,7 @@ article {
 aside {
    position: absolute;
    right: 10px;
-
-   /* 🔥 PERFECT ALIGNMENT WITH H2 */
-   top: 20px;
-
+   top: 5px;
    width: 200px;
    background: #fff;
    padding: 15px;
@@ -135,7 +126,6 @@ aside h2 {
 .asideText {
    font-size: 0.75em;
    font-style: italic;
-   margin-left: 0;
 }
 
 /* Footer Styles */
@@ -143,19 +133,15 @@ aside h2 {
 footer {
    clear: both;
    border: 1px solid #9ca3af;
-
    background-image:
       linear-gradient(rgba(47, 62, 82, 0.9), rgba(59, 76, 99, 0.9)),
       url("footer-bg.png");
-
    background-size: auto 100%;
    background-repeat: repeat-x;
    background-position: center;
-
    padding: 20px;
    margin-top: 20px;
    border-radius: 6px;
-
    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -201,7 +187,7 @@ table.home th {
    text-align: left;
 }
 
-/* Mobile Nav (Hamburger with slide animation) */
+/* Mobile Nav */
 
 .nav-toggle {
    display: none;
@@ -228,8 +214,7 @@ table.home th {
    nav {
       float: none;
       width: 100%;
-      position: static;
-      top: 0;
+      padding: 12px;
    }
 
    .nav-toggle {
