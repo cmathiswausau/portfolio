@@ -35,7 +35,7 @@ h2 {
    color: #2f3e52;
    padding: 6px 10px;
    border-radius: 4px;
-   margin-top: 0; /* 🔥 removes default offset */
+   margin-top: 0; /* 🔥 ensures alignment */
 }
 
 /* Header Styles */
@@ -62,7 +62,10 @@ nav {
    background: #7c93b5;
    padding: 12px;
    border-radius: 8px;
-   margin-top: 15px; /* aligns with section */
+
+   /* 🔥 ALIGNMENT FIX */
+   position: relative;
+   top: 15px;
 }
 
 nav ul {
@@ -92,7 +95,10 @@ nav a.active {
 section {
    position: relative;
    margin-left: 180px;
-   margin-top: 15px; /* aligns with nav */
+
+   /* 🔥 MATCH NAV OFFSET */
+   margin-top: 15px;
+
    padding: 20px;
    background: #fff;
    border-radius: 6px;
@@ -112,7 +118,7 @@ aside {
    position: absolute;
    right: 10px;
 
-   /* 🔥 KEY FIX: aligns with h2 inside section padding */
+   /* 🔥 PERFECT ALIGNMENT WITH H2 */
    top: 20px;
 
    width: 200px;
@@ -222,7 +228,8 @@ table.home th {
    nav {
       float: none;
       width: 100%;
-      margin-top: 0;
+      position: static;
+      top: 0;
    }
 
    .nav-toggle {
