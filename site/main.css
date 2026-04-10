@@ -149,6 +149,8 @@ footer address,
 footer p,
 footer a {
    color: #ffffff;
+   font-size: 0.75em;
+   text-align: center;
 }
 
 footer a {
@@ -169,7 +171,7 @@ table.home {
    margin-top: 15px;
 }
 
-table.home th {
+table.home thead {
    background-color: #99b1db;
    color: #2f3e52;
    padding: 8px;
