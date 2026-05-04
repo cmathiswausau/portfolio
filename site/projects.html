@@ -8,6 +8,13 @@
 
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="main.css">
+    <style>
+        h1 {
+            text-align: center;
+            color: #2f3e52;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body id="top">
@@ -20,7 +27,6 @@
         </header>
 
         <nav>
-            <button class="nav-toggle">☰</button>
             <ul>
                 <li><a href="index.html" title="Go to Home Page">Home</a></li>
                 <li><a href="projects.html" class="active" title="View My Projects">Projects</a></li>
@@ -33,6 +39,7 @@
         <section>
 
             <article>
+                <h1>Projects</h1>
 
                 <h2>Projects & Engineering Work</h2>
 
@@ -43,28 +50,28 @@
 
                 <!-- PROJECT 1 -->
                 <h2>Infrastructure Automation Toolkit</h2>
-
+                <img src="project1.png" alt="PowerShell automation script screenshot" class="project-img">
                 <p><strong>Overview:</strong> Developed automation tools to streamline system administration tasks
                     across Windows server environments.</p>
 
-                <p><strong>Key Contributions:</strong></p>
+                <p class="clear"><strong>Key Contributions:</strong></p>
                 <ul>
                     <li>Built PowerShell scripts to automate routine administrative processes</li>
                     <li>Reduced manual workload and improved operational consistency</li>
                     <li>Standardized common tasks across multiple systems</li>
                 </ul>
 
-                <p><strong>Technologies Used:</strong> PowerShell, Windows Server</p>
+                <p class="clear"><strong>Technologies Used:</strong> PowerShell, Windows Server</p>
 
                 <hr>
 
                 <!-- PROJECT 2 -->
                 <h2>Enterprise Network Modernization</h2>
-
+                <img src="project2.png" alt="PowerShell automation script screenshot" class="project-img">
                 <p><strong>Overview:</strong> Participated in large-scale infrastructure upgrades and network redesign
                     efforts.</p>
 
-                <p><strong>Key Contributions:</strong></p>
+                <p class="clear"><strong>Key Contributions:</strong></p>
                 <ul>
                     <li>Migrated environments from Windows Server 2012 R2 to 2022</li>
                     <li>Designed improvements for scalability and high availability</li>
@@ -76,6 +83,28 @@
                 <hr>
 
                 <!-- PROJECT 3 -->
+                <h2>GitHub & Collaborative Development</h2>
+                <img src="project3.png" alt="PowerShell automation script screenshot" class="project-img">
+                <p><strong>Overview:</strong> Active contributor to codebases using Git and GitHub workflows.</p>
+
+                <p class="clear"><strong>Key Contributions:</strong></p>
+                <ul>
+                    <li>Submitted pull requests and participated in issue tracking</li>
+                    <li>Collaborated on code improvements within shared repositories</li>
+                    <li>Applied version control best practices in development workflows</li>
+                </ul>
+
+                <p class="clear">
+                    <strong>Repository:</strong><br><br>
+                    <a href="https://github.com/cmathiswausau" target="_blank">
+                        https://github.com/cmathiswausau
+                    </a>
+                </p>
+
+                <hr>
+
+                <!-- PROJECT 4 -->
+
                 <h2>SQL Reporting & Data Analysis Solutions</h2>
 
                 <p><strong>Overview:</strong> Developed database queries and reporting solutions to support operational
@@ -89,27 +118,6 @@
                 </ul>
 
                 <p><strong>Technologies Used:</strong> SQL Server</p>
-
-                <hr>
-
-                <!-- PROJECT 4 -->
-                <h2>GitHub & Collaborative Development</h2>
-
-                <p><strong>Overview:</strong> Active contributor to codebases using Git and GitHub workflows.</p>
-
-                <p><strong>Key Contributions:</strong></p>
-                <ul>
-                    <li>Submitted pull requests and participated in issue tracking</li>
-                    <li>Collaborated on code improvements within shared repositories</li>
-                    <li>Applied version control best practices in development workflows</li>
-                </ul>
-
-                <p>
-                    <strong>Repository:</strong><br>
-                    <a href="https://github.com/cmathiswausau" target="_blank">
-                        https://github.com/cmathiswausau
-                    </a>
-                </p>
 
             </article>
 
@@ -134,11 +142,6 @@
         </footer>
 
     </div>
-    <script>
-        document.querySelector(".nav-toggle").addEventListener("click", function () {
-            document.querySelector("nav ul").classList.toggle("show");
-        });
-    </script>
 </body>
 
 </html>

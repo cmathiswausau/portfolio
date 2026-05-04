@@ -1,6 +1,6 @@
 /*
 Author Name: Chris Mathis
-Date: 3/30/2026
+Date: 4/21/2026
 */
 
 /* Global / Layout */
@@ -174,19 +174,76 @@ table.home {
 table.home thead {
    background-color: #99b1db;
    color: #2f3e52;
-   padding: 8px;
 }
 
+table.home th,
 table.home td {
    padding: 10px;
    border: 1px solid #9ca3af;
-   color: #2f3e52;
-   background-color: #f9fafb;
+   text-align: left;
 }
 
-table.home td,
-table.home th {
-   text-align: left;
+table.home td {
+   background-color: #f9fafb;
+   color: #2f3e52;
+}
+
+/* Projects Styles */
+
+.projects p {
+   font-size: 1.2em;
+   margin: 10px;
+}
+
+.clear {
+   clear: both;
+}
+
+.project-img {
+   float: left;
+   width: 220px;
+   margin: 0 15px 10px 0;
+}
+
+/* Forms Styles */
+
+form {
+   background: #ffffff;
+   padding: 15px;
+   border-radius: 6px;
+   margin-top: 15px;
+}
+
+fieldset {
+   border: 1px solid #9ca3af;
+   padding: 15px;
+   border-radius: 6px;
+}
+
+legend {
+   font-weight: bold;
+   color: #2f3e52;
+}
+
+input,
+textarea {
+   width: 100%;
+   padding: 8px;
+   margin-top: 5px;
+   margin-bottom: 10px;
+   border: 1px solid #9ca3af;
+   border-radius: 4px;
+}
+
+input[type="submit"] {
+   background: #2f3e52;
+   color: #ffffff;
+   border: none;
+   cursor: pointer;
+}
+
+input[type="submit"]:hover {
+   background: #4f6482;
 }
 
 /* Mobile Nav */
