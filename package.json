@@ -1,5 +1,29 @@
 {
-  "dependencies": {
-    "normalize.css": "^8.0.1"
-  }
+    "dependencies": {
+        "normalize.css": "^8.0.1"
+    },
+    "name": "ntc_portfolio",
+    "version": "1.0.0",
+    "type": "module",
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.10.0",
+        "eslint-plugin-jsdoc": "^63.3.3"
+    },
+    "scripts": {
+        "lint": "eslint site --ignore-pattern site/Fall2026"
+    },
+    "description": "Deployed via Azure Static Web Apps. Only /site is deployed.",
+    "main": "eslint.config.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cmathiswausau/portfolio.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/cmathiswausau/portfolio/issues"
+    },
+    "homepage": "https://github.com/cmathiswausau/portfolio#readme"
 }

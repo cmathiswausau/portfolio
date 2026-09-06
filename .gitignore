@@ -3,9 +3,4 @@ node_modules/
 .vscode/
 package-lock.json
 package.json
-/.vs/portfolio/FileContentIndex/6994343c-d3e3-4ec0-998f-76160e7ff8e8.vsidx
-/.vs/portfolio/FileContentIndex/a7493142-140a-4dd9-a121-7439f2a19a9e.vsidx
-/.vs/portfolio/FileContentIndex/b2b7c131-5ea8-4479-a2b1-9e5654154af4.vsidx
-/.vs/portfolio/FileContentIndex/b6e9c093-2270-4944-bcdf-b404f32cab25.vsidx
-/.vs/portfolio/FileContentIndex/373a55c8-f8c0-437b-ae4a-38893dab4ec6.vsidx
-/.vs/portfolio/FileContentIndex/a60da185-4ad0-4dc3-a9e4-9a44e0e968c9.vsidx
+/.vs/
