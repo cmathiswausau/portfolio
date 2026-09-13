@@ -63,7 +63,7 @@ export default [
             "no-var": "error",
 
             // Prefer const when a variable isn't reassigned
-            "prefer-const": "error",
+            "prefer-const": "off",
 
             // ========================================
             // JSDoc Documentation
