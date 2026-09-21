@@ -5,23 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Projects</title>
-
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="main.css">
-
-    <style>
-        h1 {
-            text-align: center;
-            color: #2f3e52;
-            margin-bottom: 10px;
-        }
-    </style>
+    <script src="script.js" defer></script>
 </head>
 
 <body id="top">
-
     <div id="wrap">
-
         <header>
             <img src="logo.png" alt="Chris Mathis Logo">
             <h1>Chris Mathis</h1>
@@ -29,193 +19,61 @@
         </header>
 
         <nav>
-            <ul>
-                <li><a href="index.html" title="Go to Home Page">Home</a></li>
-                <li><a href="projects.html" class="active" title="View My Projects">Projects</a></li>
-                <li><a href="resume-network.html" title="View Network Resume">Network Resume</a></li>
-                <li><a href="resume-software.html" title="View Software Resume">Software Resume</a></li>
-                <li><a href="contact.html" title="Contact Me">Contact</a></li>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">☰ Menu</button>
+            <ul id="site-navigation">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="resume-network.html">Network Resume</a></li>
+                <li><a href="resume-software.html">Software Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
 
         <section class="projects">
-
             <article>
-
                 <h1>Projects</h1>
 
-                <h2>Projects & Engineering Work</h2>
-
+                <h2>Projects &amp; Engineering Work</h2>
                 <p>
-                    Below are examples of real-world engineering, automation, and development work demonstrating my
-                    experience in both infrastructure and software solutions.
+                    Explore examples of engineering, automation, infrastructure, and software development work.
+                    The project cards below are generated dynamically with JavaScript.
                 </p>
 
-                <!-- PROJECT 1 -->
+                <div id="projectGallery" class="project-gallery" aria-live="polite">
+                    <p>Loading projects...</p>
+                </div>
 
-                <h2>Infrastructure Automation Toolkit</h2>
-
-                <img src="project1.png"
-                    alt="PowerShell automation script screenshot"
-                    class="project-img">
-
-                <p>
-                    <strong>Overview:</strong>
-                    Developed automation tools to streamline system administration tasks across Windows server
-                    environments. These automation solutions reduced repetitive manual processes, improved consistency
-                    between systems, and simplified administrative workflows for ongoing infrastructure support.
-                    Additional scripting improvements allowed maintenance operations to be completed more efficiently
-                    while reducing the likelihood of human error during deployment and management tasks.
-                </p>
-
-                <p class="clear">
-                    <strong>Key Contributions:</strong>
-                </p>
-
-                <ul>
-                    <li>Built PowerShell scripts to automate routine administrative processes</li>
-                    <li>Reduced manual workload and improved operational consistency</li>
-                    <li>Standardized common tasks across multiple systems</li>
-                </ul>
-
-                <p class="clear">
-                    <strong>Technologies Used:</strong>
-                    PowerShell, Windows Server
-                </p>
-
-                <hr>
-
-                <!-- PROJECT 2 -->
-
-                <h2>Enterprise Network Modernization</h2>
-
-                <img src="project2.png"
-                    alt="Enterprise network infrastructure"
-                    class="project-img">
-
-                <p>
-                    <strong>Overview:</strong>
-                    Participated in large-scale infrastructure upgrades and network redesign efforts supporting
-                    enterprise environments. These modernization projects focused on improving reliability,
-                    scalability, and communication between systems while supporting business continuity and long-term
-                    operational growth. Infrastructure improvements included server upgrades, hardware refreshes,
-                    and network optimization initiatives designed to improve performance and resiliency across
-                    multiple locations.
-                </p>
-
-                <p class="clear">
-                    <strong>Key Contributions:</strong>
-                </p>
-
-                <ul>
-                    <li>Migrated environments from Windows Server 2012 R2 to 2022</li>
-                    <li>Designed improvements for scalability and high availability</li>
-                    <li>Implemented updated network topology and communication systems</li>
-                </ul>
-
-                <p class="clear">
-                    <strong>Technologies Used:</strong>
-                    Cisco, Fortinet, Windows Server
-                </p>
-
-                <hr>
-
-                <!-- PROJECT 3 -->
-
-                <h2>GitHub & Collaborative Development</h2>
-
-                <img src="project3.png"
-                    alt="GitHub project overview screenshot"
-                    class="project-img">
-
-                <p>
-                    <strong>Overview:</strong>
-                    Active contributor to software development projects using Git and GitHub workflows for source
-                    control and collaboration. Development activities included maintaining repositories,
-                    participating in issue tracking, reviewing code changes, and documenting project functionality
-                    for future improvements. These collaborative workflows improved version control practices and
-                    supported organized development efforts across multiple projects and environments.
-                </p>
-
-                <p class="clear">
-                    <strong>Key Contributions:</strong>
-                </p>
-
-                <ul>
-                    <li>Submitted pull requests and participated in issue tracking</li>
-                    <li>Collaborated on code improvements within shared repositories</li>
-                    <li>Applied version control best practices in development workflows</li>
-                </ul>
-
-                <p class="clear">
-                    <strong>Repository:</strong><br><br>
-
-                    <a href="https://github.com/cmathiswausau" target="_blank">
-                        https://github.com/cmathiswausau
-                    </a>
-                </p>
-
-                <hr>
-
-                <!-- PROJECT 4 -->
-
-                <h2>SQL Reporting & Data Analysis Solutions</h2>
-
-                <p>
-                    <strong>Overview:</strong>
-                    Developed database queries and reporting solutions to support operational decision-making and
-                    improve visibility into infrastructure performance. Reporting tools were designed to organize
-                    collected information into useful data sets that could be reviewed for troubleshooting,
-                    planning, and optimization purposes. These solutions helped improve data accessibility and
-                    supported more informed technical decision-making processes.
-                </p>
-
-                <p>
-                    <strong>Key Contributions:</strong>
-                </p>
-
-                <ul>
-                    <li>Created SQL queries to extract and analyze system data</li>
-                    <li>Built reporting tools for improved visibility into infrastructure performance</li>
-                    <li>Delivered actionable insights for system optimization</li>
-                </ul>
-
-                <p>
-                    <strong>Technologies Used:</strong>
-                    SQL Server
-                </p>
-
+                <div class="project-detail-note">
+                    <h2>Additional Project Work</h2>
+                    <p>
+                        <strong>SQL Reporting &amp; Data Analysis Solutions:</strong>
+                        Developed database queries and reporting solutions to organize operational information for
+                        troubleshooting, planning, and system optimization.
+                    </p>
+                    <p>
+                        <strong>Technologies Used:</strong> SQL Server
+                    </p>
+                </div>
             </article>
 
             <aside>
-
                 <h2>Project Focus</h2>
-
-                <p class="asideText">Automation & efficiency</p>
+                <p class="asideText">Automation &amp; efficiency</p>
                 <p class="asideText">Enterprise infrastructure</p>
                 <p class="asideText">Software-driven solutions</p>
-
             </aside>
-
         </section>
 
         <footer>
-
             <address>
                 Chris Mathis<br>
                 1005 N 1st Ave<br>
                 Wausau, WI 54401<br>
                 United States
             </address>
-
-            <p>
-                <a href="#top">Back To Top</a>
-            </p>
-
+            <p><a href="#top">Back To Top</a></p>
         </footer>
-
     </div>
-
 </body>
 
 </html>

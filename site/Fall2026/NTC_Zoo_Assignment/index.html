@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive NTC Zoo animal guide">
+    <title>NTC Zoo | Interactive Animal Guide</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <p class="eyebrow">Northcentral Technical College</p>
+            <h1>NTC Zoo</h1>
+            <p class="tagline">Explore the animals and discover something new.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro" aria-labelledby="guide-heading">
+            <h2 id="guide-heading">Animal Guide</h2>
+            <p>Select an animal below to learn about its habitat, behavior, and some interesting facts.</p>
+        </section>
+
+        <section class="animal-layout" aria-label="NTC Zoo animal guide">
+            <div class="animal-list">
+                <h2>Meet the Animals</h2>
+
+                <div id="animalButtons" class="animal-buttons">
+                    <!-- Buttons are created dynamically with JavaScript. -->
+                </div>
+            </div>
+
+            <article id="animalDetails" class="animal-details" aria-live="polite">
+                <p class="placeholder">Select an animal to begin exploring.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>NTC Zoo Interactive Guide &mdash; Sprint A3 Zoo Assignment</p>
+        </div>
+    </footer>
+</body>
+</html>

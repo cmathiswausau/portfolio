@@ -1,78 +1,210 @@
-// Part 1: Review and Refactor Existing Code
-// Use let for variables that represent values used by the website project.
-let projectName = "JavaScript Basics";
-let lessonNumber = 2;
-let assignmentComplete = true;
+// Portfolio project data used to build the project gallery dynamically.
+const projects = [
+    {
+        id: 1,
+        title: "Infrastructure Automation Toolkit",
+        description: "Automation tools for streamlining system administration tasks and reducing repetitive manual work.",
+        technologiesUsed: ["PowerShell", "Windows Server"],
+        image: "project1.png",
+        alt: "PowerShell automation script screenshot"
+    },
+    {
+        id: 2,
+        title: "Enterprise Network Modernization",
+        description: "Infrastructure upgrades and network redesign work focused on reliability, scalability, and communication.",
+        technologiesUsed: ["Cisco", "Fortinet", "Windows Server"],
+        image: "project2.png",
+        alt: "Enterprise network infrastructure"
+    },
+    {
+        id: 3,
+        title: "GitHub & Collaborative Development",
+        description: "Collaborative software development using Git and GitHub workflows for source control and organized development.",
+        technologiesUsed: ["Git", "GitHub", "C#"],
+        image: "project3.png",
+        alt: "GitHub project overview screenshot",
+        link: "https://github.com/cmathiswausau"
+    }
+];
 
-// Use the typeof operator to check the data types of the variables.
-console.log(typeof projectName);
-console.log(typeof lessonNumber);
-console.log(typeof assignmentComplete);
+// Build the project gallery using DOM manipulation.
+function createProjectGallery() {
+    const gallery = document.getElementById("projectGallery");
 
-// Use an arithmetic operator to calculate a value from the variables.
-let nextLesson = lessonNumber + 1;
-console.log(`Next lesson: ${nextLesson}`);
+    if (!gallery) {
+        return;
+    }
 
-// Use a logical operator to evaluate whether the assignment is ready.
-let readyForSubmission = assignmentComplete && nextLesson > lessonNumber;
-console.log(`Ready for submission: ${readyForSubmission}`);
+    gallery.innerHTML = "";
 
-// Use the conditional (ternary) operator to set a value based on a condition.
-let status = assignmentComplete ? "Complete" : "In Progress";
-console.log(`Assignment status: ${status}`);
+    projects.forEach((project) => {
+        const card = document.createElement("article");
+        card.className = "project-card";
 
-// Demonstrate implicit type conversion by adding a number and a string.
-let lessonLabel = lessonNumber + "A";
-console.log(`Implicit conversion: ${lessonLabel}`);
+        const image = document.createElement("img");
+        image.src = project.image;
+        image.alt = project.alt;
+        image.className = "project-card-image";
 
-// Explicitly convert values using String(), Number(), and Boolean().
-let convertedNumber = Number("10");
-let convertedString = String(10);
-let convertedBoolean = Boolean(1);
+        const content = document.createElement("div");
+        content.className = "project-card-content";
 
-console.log(`Number conversion: ${convertedNumber}`);
-console.log(`String conversion: ${convertedString}`);
-console.log(`Boolean conversion: ${convertedBoolean}`);
+        const title = document.createElement("h3");
+        title.textContent = project.title;
 
+        const description = document.createElement("p");
+        description.textContent = project.description;
 
-// Part 2: Integrate Arrays and Objects
+        const technologyList = document.createElement("ul");
+        technologyList.className = "technology-list";
+        technologyList.setAttribute("aria-label", "Technologies used");
 
-// Create an array containing project objects.
-let projects = [];
+        project.technologiesUsed.forEach((technology) => {
+            const item = document.createElement("li");
+            item.textContent = technology;
+            technologyList.appendChild(item);
+        });
 
-// Add a project demonstrating automation and scripting skills.
-projects.push({
-    id: 1,
-    title: "Infrastructure Automation Toolkit",
-    description: "Automation tools for streamlining system administration tasks.",
-    technologiesUsed: ["PowerShell", "Windows Server"]
-});
+        content.appendChild(title);
+        content.appendChild(description);
+        content.appendChild(technologyList);
 
-// Add a project demonstrating enterprise networking and infrastructure skills.
-projects.push({
-    id: 2,
-    title: "Enterprise Network Modernization",
-    description: "Infrastructure upgrades and network redesign work for enterprise environments.",
-    technologiesUsed: ["Cisco", "Fortinet", "Windows Server"]
-});
+        if (project.link) {
+            const link = document.createElement("a");
+            link.href = project.link;
+            link.target = "_blank";
+            link.rel = "noopener";
+            link.textContent = "View GitHub Repository";
+            link.className = "project-link";
+            content.appendChild(link);
+        }
 
-// Add a project demonstrating software development and collaboration skills.
-projects.push({
-    id: 3,
-    title: "GitHub & Collaborative Development",
-    description: "Collaborative software development using source control and GitHub workflows.",
-    technologiesUsed: ["Git", "GitHub", "C#"]
-});
-
-// Log the projects array to verify that the objects are structured correctly.
-console.log("Projects:", projects);
-console.table(projects);
-
-
-// Existing site navigation behavior.
-let navToggle = document.querySelector(".nav-toggle");
-if (navToggle) {
-    navToggle.addEventListener("click", function () {
-        document.querySelector("nav ul").classList.toggle("show");
+        card.appendChild(image);
+        card.appendChild(content);
+        gallery.appendChild(card);
     });
 }
+
+// Validate a single contact form field and display immediate feedback.
+function validateField(input, feedback, message) {
+    if (input.value.trim() === "") {
+        input.classList.add("input-error");
+        input.setAttribute("aria-invalid", "true");
+        feedback.textContent = message;
+        return false;
+    }
+
+    input.classList.remove("input-error");
+    input.setAttribute("aria-invalid", "false");
+    feedback.textContent = "";
+    return true;
+}
+
+function validateEmail(input, feedback) {
+    const email = input.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email === "") {
+        input.classList.add("input-error");
+        input.setAttribute("aria-invalid", "true");
+        feedback.textContent = "Email is required.";
+        return false;
+    }
+
+    if (!emailPattern.test(email)) {
+        input.classList.add("input-error");
+        input.setAttribute("aria-invalid", "true");
+        feedback.textContent = "Please enter a valid email address.";
+        return false;
+    }
+
+    input.classList.remove("input-error");
+    input.setAttribute("aria-invalid", "false");
+    feedback.textContent = "";
+    return true;
+}
+
+// Add contact form validation and interaction behavior.
+function setupContactForm() {
+    const form = document.getElementById("contactForm");
+
+    if (!form) {
+        return;
+    }
+
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const subject = document.getElementById("subject");
+    const message = document.getElementById("message");
+
+    const nameFeedback = document.getElementById("nameFeedback");
+    const emailFeedback = document.getElementById("emailFeedback");
+    const subjectFeedback = document.getElementById("subjectFeedback");
+    const messageFeedback = document.getElementById("messageFeedback");
+    const formStatus = document.getElementById("formStatus");
+
+    name.addEventListener("input", () => {
+        validateField(name, nameFeedback, "Name is required.");
+    });
+
+    email.addEventListener("input", () => {
+        validateEmail(email, emailFeedback);
+    });
+
+    subject.addEventListener("input", () => {
+        validateField(subject, subjectFeedback, "Subject is required.");
+    });
+
+    message.addEventListener("input", () => {
+        validateField(message, messageFeedback, "Message is required.");
+    });
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const nameValid = validateField(name, nameFeedback, "Name is required.");
+        const emailValid = validateEmail(email, emailFeedback);
+        const subjectValid = validateField(subject, subjectFeedback, "Subject is required.");
+        const messageValid = validateField(message, messageFeedback, "Message is required.");
+
+        if (!nameValid || !emailValid || !subjectValid || !messageValid) {
+            formStatus.textContent = "Please correct the highlighted fields before submitting.";
+            formStatus.className = "form-status form-status-error";
+            return;
+        }
+
+        // This is a portfolio demonstration, so no backend is required.
+        formStatus.textContent = "Thank you! Your message has been validated successfully.";
+        formStatus.className = "form-status form-status-success";
+        form.classList.add("form-success");
+
+        form.reset();
+
+        name.setAttribute("aria-invalid", "false");
+        email.setAttribute("aria-invalid", "false");
+        subject.setAttribute("aria-invalid", "false");
+        message.setAttribute("aria-invalid", "false");
+    });
+}
+
+// Existing responsive navigation plus DOM-based accessibility state.
+function setupNavigation() {
+    const navToggle = document.querySelector(".nav-toggle");
+    const navList = document.querySelector("#site-navigation");
+
+    if (!navToggle || !navList) {
+        return;
+    }
+
+    navToggle.addEventListener("click", () => {
+        const isOpen = navList.classList.toggle("show");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+}
+
+// Run page-specific DOM setup after the document has loaded.
+document.addEventListener("DOMContentLoaded", () => {
+    createProjectGallery();
+    setupContactForm();
+    setupNavigation();
+});
