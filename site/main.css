@@ -102,8 +102,8 @@ section ul {
    list-style-type: square;
 }
 
-article {
-   margin-right: 240px;
+section > article {
+    margin-right: 240px;
 }
 
 /* Aside Styles */
