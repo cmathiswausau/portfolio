@@ -3,7 +3,8 @@ const projects = [
     {
         id: 1,
         title: "Infrastructure Automation Toolkit",
-        description: "Automation tools for streamlining system administration tasks and reducing repetitive manual work.",
+        description:
+            "Automation tools for streamlining system administration tasks and reducing repetitive manual work.",
         technologiesUsed: ["PowerShell", "Windows Server"],
         image: "project1.png",
         alt: "PowerShell automation script screenshot"
@@ -11,7 +12,8 @@ const projects = [
     {
         id: 2,
         title: "Enterprise Network Modernization",
-        description: "Infrastructure upgrades and network redesign work focused on reliability, scalability, and communication.",
+        description:
+            "Infrastructure upgrades and network redesign work focused on reliability, scalability, and communication.",
         technologiesUsed: ["Cisco", "Fortinet", "Windows Server"],
         image: "project2.png",
         alt: "Enterprise network infrastructure"
@@ -19,7 +21,8 @@ const projects = [
     {
         id: 3,
         title: "GitHub & Collaborative Development",
-        description: "Collaborative software development using Git and GitHub workflows for source control and organized development.",
+        description:
+            "Collaborative software development using Git and GitHub workflows for source control and organized development.",
         technologiesUsed: ["Git", "GitHub", "C#"],
         image: "project3.png",
         alt: "GitHub project overview screenshot",
@@ -27,7 +30,9 @@ const projects = [
     }
 ];
 
-// Build the project gallery using DOM manipulation.
+/**
+ * Build the project gallery using DOM manipulation.
+ */
 function createProjectGallery() {
     const gallery = document.getElementById("projectGallery");
 
@@ -35,7 +40,7 @@ function createProjectGallery() {
         return;
     }
 
-    gallery.innerHTML = "";
+    gallery.replaceChildren();
 
     projects.forEach((project) => {
         const card = document.createElement("article");
@@ -85,7 +90,14 @@ function createProjectGallery() {
     });
 }
 
-// Validate a single contact form field and display immediate feedback.
+/**
+ * Validate a single contact form field and display immediate feedback.
+ *
+ * @param {HTMLInputElement} input The form input field.
+ * @param {HTMLElement} feedback The element used to display feedback.
+ * @param {string} message The validation message to display.
+ * @returns {boolean} Whether the field contains a value.
+ */
 function validateField(input, feedback, message) {
     if (input.value.trim() === "") {
         input.classList.add("input-error");
@@ -100,6 +112,13 @@ function validateField(input, feedback, message) {
     return true;
 }
 
+/**
+ * Validate an email form field and display immediate feedback.
+ *
+ * @param {HTMLInputElement} input The email input field.
+ * @param {HTMLElement} feedback The element used to display feedback.
+ * @returns {boolean} Whether the email address is valid.
+ */
 function validateEmail(input, feedback) {
     const email = input.value.trim();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -124,7 +143,9 @@ function validateEmail(input, feedback) {
     return true;
 }
 
-// Add contact form validation and interaction behavior.
+/**
+ * Add contact form validation and interaction behavior.
+ */
 function setupContactForm() {
     const form = document.getElementById("contactForm");
 
@@ -162,19 +183,36 @@ function setupContactForm() {
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        const nameValid = validateField(name, nameFeedback, "Name is required.");
+        const nameValid = validateField(
+            name,
+            nameFeedback,
+            "Name is required."
+        );
+
         const emailValid = validateEmail(email, emailFeedback);
-        const subjectValid = validateField(subject, subjectFeedback, "Subject is required.");
-        const messageValid = validateField(message, messageFeedback, "Message is required.");
+
+        const subjectValid = validateField(
+            subject,
+            subjectFeedback,
+            "Subject is required."
+        );
+
+        const messageValid = validateField(
+            message,
+            messageFeedback,
+            "Message is required."
+        );
 
         if (!nameValid || !emailValid || !subjectValid || !messageValid) {
-            formStatus.textContent = "Please correct the highlighted fields before submitting.";
+            formStatus.textContent =
+                "Please correct the highlighted fields before submitting.";
             formStatus.className = "form-status form-status-error";
             return;
         }
 
         // This is a portfolio demonstration, so no backend is required.
-        formStatus.textContent = "Thank you! Your message has been validated successfully.";
+        formStatus.textContent =
+            "Thank you! Your message has been validated successfully.";
         formStatus.className = "form-status form-status-success";
         form.classList.add("form-success");
 
@@ -187,7 +225,9 @@ function setupContactForm() {
     });
 }
 
-// Existing responsive navigation plus DOM-based accessibility state.
+/**
+ * Set up responsive navigation and accessibility state.
+ */
 function setupNavigation() {
     const navToggle = document.querySelector(".nav-toggle");
     const navList = document.querySelector("#site-navigation");
