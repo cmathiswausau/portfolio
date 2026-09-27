@@ -1,6 +1,104 @@
 import eslint from "@eslint/js";
 import jsdoc from "eslint-plugin-jsdoc";
 
+const stylecopDocumentation = {
+    rules: {
+        "require-parameters-and-returns": {
+            meta: {
+                type: "problem",
+                docs: {
+                    description:
+                        "Require StyleCop-like parameter and return descriptions."
+                },
+                schema: [],
+                messages: {
+                    parameters:
+                        "Document function parameters with a Parameters: section.",
+                    returns:
+                        "Document function return values with a Returns: section."
+                }
+            },
+            create(context) {
+                const sourceCode = context.sourceCode;
+
+                function hasValueReturn(node) {
+                    if (node.type === "ReturnStatement") {
+                        return node.argument !== null;
+                    }
+
+                    if (
+                        node !== context.getAncestors().at(-1) &&
+                        [
+                            "FunctionDeclaration",
+                            "FunctionExpression",
+                            "ArrowFunctionExpression"
+                        ].includes(node.type)
+                    ) {
+                        return false;
+                    }
+
+                    return Object.keys(node).some((key) => {
+                        const child = node[key];
+
+                        if (key === "parent" || child === null) {
+                            return false;
+                        }
+
+                        if (Array.isArray(child)) {
+                            return child.some(
+                                (item) =>
+                                    item &&
+                                    typeof item.type === "string" &&
+                                    hasValueReturn(item)
+                            );
+                        }
+
+                        return (
+                            typeof child === "object" &&
+                            typeof child.type === "string" &&
+                            hasValueReturn(child)
+                        );
+                    });
+                }
+
+                function getDocumentation(node) {
+                    return sourceCode
+                        .getCommentsBefore(node)
+                        .filter((comment) => comment.type === "Block")
+                        .map((comment) => comment.value)
+                        .join("\n");
+                }
+
+                return {
+                    FunctionDeclaration(node) {
+                        const documentation = getDocumentation(node);
+
+                        if (
+                            node.params.length > 0 &&
+                            !/\bParameters\s*:/u.test(documentation)
+                        ) {
+                            context.report({
+                                node,
+                                messageId: "parameters"
+                            });
+                        }
+
+                        if (
+                            hasValueReturn(node.body) &&
+                            !/\bReturns\s*:/u.test(documentation)
+                        ) {
+                            context.report({
+                                node,
+                                messageId: "returns"
+                            });
+                        }
+                    }
+                };
+            }
+        }
+    }
+};
+
 export default [
     eslint.configs.recommended,
 
@@ -8,12 +106,14 @@ export default [
         languageOptions: {
             ecmaVersion: 2021,
             globals: {
-                console: "readonly"
+                console: "readonly",
+                document: "readonly"
             }
         },
 
         plugins: {
-            jsdoc
+            jsdoc,
+            stylecop: stylecopDocumentation
         },
 
         rules: {
@@ -83,14 +183,11 @@ export default [
                 }
             ],
 
-            // Require documentation for parameters
-            "jsdoc/require-param": "error",
-
-            // Require documentation for return values
-            "jsdoc/require-returns": "error",
-
             // Require a description in JSDoc comments
-            "jsdoc/require-description": "error"
+            "jsdoc/require-description": "error",
+
+            // Require StyleCop-like parameter and return descriptions
+            "stylecop/require-parameters-and-returns": "error"
         }
     }
 ];

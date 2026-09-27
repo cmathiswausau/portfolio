@@ -8,7 +8,8 @@
     "devDependencies": {
         "@eslint/js": "^10.0.1",
         "eslint": "^10.10.0",
-        "eslint-plugin-jsdoc": "^63.3.3"
+        "eslint-plugin-jsdoc": "^63.3.3",
+        "htmlhint": "^1.9.2"
     },
     "scripts": {
         "lint": "eslint site --ignore-pattern site/Fall2026"
