@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Document Head -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Home | Chris Mathis</title>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body id="top">
     <div id="wrap">
+        <!-- Page Header -->
         <header>
             <img src="logo.png" alt="Chris Mathis Logo">
             <h1>Chris Mathis</h1>
             <h2>Network Engineer | Software Developer</h2>
         </header>
+
+        <!-- Main Navigation -->
         <nav>
-            <button class="nav-toggle">☰</button>
-            <ul>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">☰ Menu</button>
+            <ul id="site-navigation">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="resume-network.html">Network Resume</a></li>
@@ -26,20 +30,103 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+
+        <!-- Main Content -->
         <section>
             <article>
+                <!-- About Me -->
                 <h2>About Me</h2>
-                <a href="resume-network.html"><img src="Chris Mathis headshot.jpg" alt="Chris Mathis headshot"
-                        width="200"></a>
-                <p>Lead Network Engineer with 25+ years experience designing and supporting enterprise infrastructure,
-                    now expanding into software development and automation.</p>
-                <ul>
-                    <li>Enterprise Networking (Cisco, Fortinet)</li>
-                    <li>Automation & Development (PowerShell, C#, SQL)</li>
-                    <li>Cloud & Infrastructure (Azure, Virtualization)</li>
-                </ul>
+                <a href="resume-network.html"><img src="Chris Mathis headshot.jpg" alt="Chris Mathis headshot" width="200"></a>
+                <p>
+                    I enjoy working with technology, solving problems, and finding practical ways to make systems work
+                    better. My career has taken me from hands-on IT support and infrastructure to network engineering,
+                    and my current education is adding software development to that foundation.
+                </p>
+
+                <!-- Professional Biography -->
+                <h2>Professional Biography</h2>
+                <p>
+                    My career has centered on building, supporting, and improving technology environments. I have spent
+                    more than 25 years working with networks, servers, security, virtualization, and other infrastructure
+                    across manufacturing, retail, and education.
+                </p>
+                <p>
+                    Today, I am combining that experience with my interest in programming and automation. During the
+                    final year of my schooling, I am developing my C# and Python skills through academic work while
+                    continuing to build on the infrastructure experience I have gained throughout my career.
+                </p>
+
+                <!-- Professional Skills Chart -->
+                <h2>Professional Skills</h2>
+                <p>
+                    The chart below groups the technologies and competencies documented in my professional resume.
+                    The values represent the number of listed competencies in each area, not a proficiency score.
+                </p>
+
+                <div class="skills-chart" aria-label="Skills chart showing the number of documented competencies in each professional area">
+                    <div class="skill-row">
+                        <div class="skill-label"><span>LAN/WAN &amp; Routing</span><span>6</span></div>
+                        <div class="skill-track"><div class="skill-bar" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-label"><span>Security</span><span>6</span></div>
+                        <div class="skill-track"><div class="skill-bar" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-label"><span>Network Monitoring</span><span>5</span></div>
+                        <div class="skill-track"><div class="skill-bar" style="width: 83%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-label"><span>Storage Systems</span><span>4</span></div>
+                        <div class="skill-track"><div class="skill-bar" style="width: 67%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-label"><span>Disaster Recovery</span><span>4</span></div>
+                        <div class="skill-track"><div class="skill-bar" style="width: 67%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-label"><span>Wireless</span><span>3</span></div>
+                        <div class="skill-track"><div class="skill-bar" style="width: 50%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-label"><span>Microsoft Software</span><span>2</span></div>
+                        <div class="skill-track"><div class="skill-bar" style="width: 33%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-label"><span>IT Documentation</span><span>2</span></div>
+                        <div class="skill-track"><div class="skill-bar" style="width: 33%;"></div></div>
+                    </div>
+                </div>
+                <p class="skill-note">C# and Python are current areas of academic study during the final year of my software-development education.</p>
+
+                <!-- Professional Endorsements -->
+                <h2>Professional Endorsements</h2>
+                <p>
+                    The following highlights summarize strengths documented in my professional experience rather than
+                    presenting invented quotations from employers or clients.
+                </p>
+                <div class="endorsements">
+                    <div class="endorsement-card">
+                        <h3>Infrastructure Leadership</h3>
+                        <p>Proven experience modernizing infrastructure, leading deployments, and maintaining operational continuity for enterprise environments.</p>
+                    </div>
+                    <div class="endorsement-card">
+                        <h3>Technical Mentoring</h3>
+                        <p>Experienced in mentoring staff in advanced networking and troubleshooting while creating policies and procedures that improve technician efficiency.</p>
+                    </div>
+                    <div class="endorsement-card">
+                        <h3>Problem Solving</h3>
+                        <p>Extensive experience handling escalated incidents across network, server, virtualization, security, and storage environments.</p>
+                    </div>
+                    <div class="endorsement-card">
+                        <h3>Continuous Development</h3>
+                        <p>Building software-development skills through current coursework while applying an established infrastructure background to automation and software solutions.</p>
+                    </div>
+                </div>
+
                 <table class="home">
-                    <caption>Technical Focus</caption>
+                    <!-- Technical Focus Table -->
+                <caption>Technical Focus</caption>
                     <thead>
                     <tr>
                         <th>Area</th>
@@ -48,30 +135,33 @@
                     </thead>
                     <tr>
                         <td>Networking</td>
-                        <td>Enterprise security & infrastructure</td>
+                        <td>Enterprise security &amp; infrastructure</td>
                     </tr>
                     <tr>
                         <td>Development</td>
-                        <td>Automation & software solutions</td>
+                        <td>Automation &amp; software solutions</td>
                     </tr>
                     <tr>
                         <td colspan="2">Bridging IT infrastructure with modern development</td>
                     </tr>
                 </table>
             </article>
+
+            <!-- Sidebar Content -->
             <aside>
                 <h2>Connect</h2>
                 <p class="asideText">
                     <strong>LinkedIn:</strong>
-                    <a href="https://www.linkedin.com/in/christophersmathis/" target="_blank">
+                    <a href="https://www.linkedin.com/in/christophersmathis/" target="_blank" rel="noopener">
                         linkedin.com/in/christophersmathis
                     </a>
                 </p>
                 <p class="asideText"><a href="mailto:chris@ccmathis.com">Email</a></p>
-                <p class="asideText"><a href="https://github.com/cmathiswausau">GitHub</a></p>
-
+                <p class="asideText"><a href="https://github.com/cmathiswausau" target="_blank" rel="noopener">GitHub</a></p>
             </aside>
         </section>
+
+        <!-- Page Footer -->
         <footer>
             <address>
                 Chris Mathis<br>

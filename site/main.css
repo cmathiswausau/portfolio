@@ -103,7 +103,7 @@ section ul {
 }
 
 section > article {
-    margin-right: 240px;
+   margin-right: 240px;
 }
 
 /* Aside Styles */
@@ -191,7 +191,7 @@ table.home td {
 /* Projects Styles */
 
 .projects p {
-   font-size: 1.2em;
+   font-size: 1em;
    margin: 10px;
 }
 
@@ -263,7 +263,7 @@ input[type="submit"]:hover {
 
 /* Responsive Styles */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
    #wrap {
       width: 100%;
       margin: 0;
@@ -327,13 +327,14 @@ input[type="submit"]:hover {
 }
 
 .project-card {
-    background: #f9fafb;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+   background: #f9fafb;
+   border: 1px solid #d1d5db;
+   border-radius: 10px;
+   overflow: hidden;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 
 .project-card:hover,
 .project-card:focus-within {
@@ -395,6 +396,7 @@ input[type="submit"]:hover {
    padding-top: 10px;
    border-top: 1px solid #d1d5db;
 }
+
 
 /* Contact form enhancements */
 .form-field {
@@ -482,8 +484,106 @@ input[type="submit"]:hover {
    }
 }
 
+
+/* Professional Profile */
+.profile-section {
+   margin-top: 25px;
+   padding-top: 10px;
+   border-top: 1px solid #d1d5db;
+}
+
+.profile-section h3 {
+   color: #2f3e52;
+   margin-bottom: 5px;
+}
+
+.skills-chart {
+   margin: 20px 0;
+}
+
+.skill-row {
+   margin-bottom: 15px;
+}
+
+.skill-label {
+   display: flex;
+   justify-content: space-between;
+   gap: 10px;
+   font-weight: bold;
+   color: #2f3e52;
+}
+
+.skill-track {
+   width: 100%;
+   height: 16px;
+   margin-top: 5px;
+   background: #e5e7eb;
+   border-radius: 10px;
+   overflow: hidden;
+}
+
+.skill-bar {
+   height: 100%;
+   background: #7c93b5;
+   border-radius: 10px;
+   animation: skillBarIn 0.8s ease both;
+}
+
+.skill-note {
+   font-size: 0.85em;
+   font-style: italic;
+   margin-top: 10px;
+}
+
+.endorsements {
+   display: grid;
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+   gap: 15px;
+   margin-top: 15px;
+}
+
+.endorsement-card {
+   padding: 15px;
+   background: #f9fafb;
+   border-left: 4px solid #99b1db;
+   border-radius: 6px;
+   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.endorsement-card:hover,
+.endorsement-card:focus-within {
+   transform: translateY(-3px);
+   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+.endorsement-card h3 {
+   margin-top: 0;
+}
+
+@keyframes skillBarIn {
+   from {
+      transform: scaleX(0);
+      transform-origin: left;
+   }
+
+   to {
+      transform: scaleX(1);
+      transform-origin: left;
+   }
+}
+
+@media (max-width: 1024px) {
+   .endorsements {
+      grid-template-columns: 1fr;
+   }
+
+   .skill-label {
+      display: block;
+   }
+}
+
 /* Improve mobile project gallery */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
    .project-gallery {
       grid-template-columns: 1fr;
    }
