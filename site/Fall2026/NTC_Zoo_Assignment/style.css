@@ -201,3 +201,137 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* Endangered Species */
+.endangered-section {
+    padding: 1rem 0 4rem;
+}
+
+.endangered-intro {
+    margin-bottom: 1.5rem;
+}
+
+.endangered-intro h2 {
+    margin-bottom: 0.25rem;
+}
+
+.endangered-intro p {
+    margin-top: 0;
+    color: var(--muted);
+}
+
+.endangered-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.endangered-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.endangered-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.endangered-card-content {
+    padding: 1.25rem;
+}
+
+.conservation-status {
+    margin: 0 0 0.35rem;
+    color: var(--primary-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.endangered-card h3 {
+    margin: 0 0 0.5rem;
+    color: var(--primary-dark);
+    font-size: 1.45rem;
+}
+
+.endangered-card-content > p:not(.conservation-status):not(.source) {
+    margin-top: 0;
+}
+
+.accordion-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 0.75rem 0.9rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--text);
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+}
+
+.accordion-button:hover,
+.accordion-button:focus-visible {
+    border-color: var(--primary);
+    background: var(--secondary);
+    outline: none;
+}
+
+.accordion-button:focus-visible,
+.animal-button:focus-visible {
+    outline: 3px solid var(--error-focus);
+    outline-offset: 2px;
+}
+
+.accordion-panel {
+    padding-top: 0.75rem;
+}
+
+.accordion-panel p {
+    margin-bottom: 0.75rem;
+}
+
+@media (max-width: 850px) {
+    .endangered-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .endangered-card {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+    }
+
+    .endangered-card img {
+        height: 100%;
+        min-height: 240px;
+    }
+}
+
+@media (max-width: 600px) {
+    .endangered-card {
+        display: block;
+    }
+
+    .endangered-card img {
+        height: 240px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+    }
+}

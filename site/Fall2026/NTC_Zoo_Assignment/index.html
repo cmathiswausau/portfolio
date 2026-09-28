@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Interactive NTC Zoo animal guide">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive NTC Zoo animal guide" />
     <title>NTC Zoo | Interactive Animal Guide</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -36,6 +36,66 @@
                 <p class="placeholder">Select an animal to begin exploring.</p>
             </article>
         </section>
+    <section class="endangered-section" aria-labelledby="endangered-heading">
+        <div class="endangered-intro">
+            <h2 id="endangered-heading">Endangered Species</h2>
+            <p>Learn more about animals facing serious conservation challenges and the work being done to protect them.</p>
+        </div>
+
+        <div class="endangered-grid">
+            <article class="endangered-card">
+                <img src="https://nationalzoo.si.edu/sites/default/files/paragraphs/single_image/20190226-bridgetisrael02.jpg" alt="Tiger resting in its habitat" loading="lazy" />
+                <div class="endangered-card-content">
+                    <p class="conservation-status">Endangered</p>
+                    <h3> Tiger</h3>
+                    <p>Tigers are large cats native to Asia. Habitat loss and other human pressures have contributed to major declines in their historic range.</p>
+                    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="tiger-info">
+                        <span>More about tigers</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                    <div id="tiger-info" class="accordion-panel" hidden>
+                        <p>Tigers occupy forests, grasslands, and mangrove habitats. Conservation programs include protected areas, research, and managed breeding programs.</p>
+                        <p class="source">Source: <a href="https://nationalzoo.si.edu/animals/tiger" target="_blank" rel="noopener">Smithsonian's National Zoo</a></p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="endangered-card">
+                <img src="https://nationalzoo.si.edu/sites/default/files/styles/max_650x650/public/paragraphs/single_image/penguins_and_chick.jpg?itok=Z3HXX9_e" alt="African penguin standing near another penguin" loading="lazy" />
+                <div class="endangered-card-content">
+                    <p class="conservation-status">Critically Endangered</p>
+                    <h3>African Penguin</h3>
+                    <p>African penguins are coastal birds that spend much of their lives at sea and return to land to breed and raise chicks.</p>
+                    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="penguin-info">
+                        <span>More about African penguins</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                    <div id="penguin-info" class="accordion-panel" hidden>
+                        <p>They are excellent swimmers and depend on healthy coastal and marine ecosystems. Conservation efforts focus on protecting breeding colonies and their food sources.</p>
+                        <p class="source">Source: <a href="https://nationalzoo.si.edu/animals" target="_blank" rel="noopener">Smithsonian's National Zoo</a></p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="endangered-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Elephant%20(1).jpg" alt="African elephant walking outdoors" loading="lazy" />
+                <div class="endangered-card-content">
+                    <p class="conservation-status">Endangered</p>
+                    <h3>African Elephant</h3>
+                    <p>African elephants are the largest living land animals and use their trunks for feeding, drinking, communication, and handling objects.</p>
+                    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="elephant-info">
+                        <span>More about African elephants</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                    <div id="elephant-info" class="accordion-panel" hidden>
+                        <p>African elephants live in a range of habitats and face threats including habitat loss and illegal killing. Conservation work includes protecting habitat and supporting anti-poaching efforts.</p>
+                        <p class="source">Source: <a href="https://nationalzoo.si.edu/animals" target="_blank" rel="noopener">Smithsonian's National Zoo</a></p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
     </main>
 
     <footer>

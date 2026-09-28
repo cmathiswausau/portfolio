@@ -1,3 +1,28 @@
+/*
+Author Name: Chris Mathis
+Date: 9/27/2026
+*/
+
+/* Constants */
+
+/**
+ * Container for the animal selection buttons.
+ */
+const animalButtons = document.getElementById("animalButtons");
+
+/**
+ * Container used to display the selected animal's information.
+ */
+const animalDetails = document.getElementById("animalDetails");
+
+/**
+ * Buttons used to display additional endangered species information.
+ */
+const accordionButtons = document.querySelectorAll(".accordion-button");
+
+/**
+ * Contains information about the animals displayed on the zoo page.
+ */
 const animals = [
     {
         id: "red-panda",
@@ -66,9 +91,30 @@ const animals = [
     }
 ];
 
-const animalButtons = document.getElementById("animalButtons");
-const animalDetails = document.getElementById("animalDetails");
+/* Event Listeners */
 
+/**
+ * Adds accessible accordion behavior to the endangered species cards.
+ */
+accordionButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const panel = document.getElementById(
+            button.getAttribute("aria-controls")
+        );
+        const expanded = button.getAttribute("aria-expanded") === "true";
+
+        button.setAttribute("aria-expanded", String(!expanded));
+        panel.hidden = expanded;
+        button.lastElementChild.textContent = expanded ? "+" : "−";
+    });
+});
+
+/* Functions */
+
+/**
+ * Creates a button for each animal in the animal list.
+ * Returns: Nothing.
+ */
 function createAnimalButtons() {
     animals.forEach((animal, index) => {
         const button = document.createElement("button");
@@ -76,7 +122,10 @@ function createAnimalButtons() {
         button.type = "button";
         button.className = "animal-button";
         button.textContent = animal.name;
-        button.setAttribute("aria-selected", index === 0 ? "true" : "false");
+        button.setAttribute(
+            "aria-selected",
+            index === 0 ? "true" : "false"
+        );
         button.setAttribute("aria-controls", "animalDetails");
 
         button.addEventListener("click", () => {
@@ -87,6 +136,12 @@ function createAnimalButtons() {
     });
 }
 
+/**
+ * Displays the selected animal's information.
+ * Parameters:
+ * - animalId: The ID of the animal to display.
+ * Returns: Nothing.
+ */
 function selectAnimal(animalId) {
     const animal = animals.find((item) => item.id === animalId);
 
@@ -101,35 +156,66 @@ function selectAnimal(animalId) {
         );
     });
 
-    animalDetails.innerHTML = `
-        <img
-            class="animal-image"
-            src="${animal.image}"
-            alt="Photo of a ${animal.name}"
-        >
+    animalDetails.replaceChildren();
 
-        <div class="animal-content">
-            <h2>${animal.name}</h2>
-            <p class="scientific-name">${animal.scientificName}</p>
+    const image = document.createElement("img");
+    image.className = "animal-image";
+    image.src = animal.image;
+    image.alt = `Photo of a ${animal.name}`;
 
-            <p>${animal.description}</p>
+    const content = document.createElement("div");
+    content.className = "animal-content";
 
-            <div class="fact-box">
-                <h3>Interesting Facts</h3>
-                <ul>
-                    ${animal.facts.map((fact) => `<li>${fact}</li>`).join("")}
-                </ul>
-            </div>
+    const heading = document.createElement("h2");
+    heading.textContent = animal.name;
 
-            <p class="source">
-                Image source:
-                <a href="${animal.image}" target="_blank" rel="noopener">
-                    ${animal.imageSource}
-                </a>
-            </p>
-        </div>
-    `;
+    const scientificName = document.createElement("p");
+    scientificName.className = "scientific-name";
+    scientificName.textContent = animal.scientificName;
+
+    const description = document.createElement("p");
+    description.textContent = animal.description;
+
+    const factBox = document.createElement("div");
+    factBox.className = "fact-box";
+
+    const factHeading = document.createElement("h3");
+    factHeading.textContent = "Interesting Facts";
+
+    const factList = document.createElement("ul");
+
+    animal.facts.forEach((fact) => {
+        const factItem = document.createElement("li");
+        factItem.textContent = fact;
+        factList.appendChild(factItem);
+    });
+
+    factBox.appendChild(factHeading);
+    factBox.appendChild(factList);
+
+    const source = document.createElement("p");
+    source.className = "source";
+    source.appendChild(document.createTextNode("Image source: "));
+
+    const sourceLink = document.createElement("a");
+    sourceLink.href = animal.image;
+    sourceLink.target = "_blank";
+    sourceLink.rel = "noopener";
+    sourceLink.textContent = animal.imageSource;
+
+    source.appendChild(sourceLink);
+
+    content.appendChild(heading);
+    content.appendChild(scientificName);
+    content.appendChild(description);
+    content.appendChild(factBox);
+    content.appendChild(source);
+
+    animalDetails.appendChild(image);
+    animalDetails.appendChild(content);
 }
+
+/* Initialize Page */
 
 createAnimalButtons();
 selectAnimal(animals[0].id);
