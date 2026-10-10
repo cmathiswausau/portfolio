@@ -1,12 +1,37 @@
-.git/
+# Node.js dependencies
 node_modules/
+
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+
+# Visual Studio / VS Code local settings and generated files
+.vs/
 .vscode/
-package-lock.json
-package.json
-/.vs/
+
+# Generated ZIP archives
 *.zip
-.vs
-/FileList.txt
-/Get-RecursiveFileList.ps1
-/site/Fall2026/FileList.txt
-/site/Fall2026/Get-RecursiveFileList.ps1
+
+# Generated recursive file inventories
+FileList.txt
+Get-RecursiveFileList.ps1
+
+# Logs and diagnostic output
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# Build output and test coverage
+/dist/
+/coverage/
+
+# ESLint cache
+.eslintcache
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
