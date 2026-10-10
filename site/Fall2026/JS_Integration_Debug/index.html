@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Integration Practice</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Part 1: External JavaScript integration. Defer waits until HTML parsing is complete. -->
+    <script src="script.js" defer></script>
+
+    <!-- Part 1: Internal JavaScript integration. -->
+    <script>
+        // Report when the page's HTML has been parsed and is ready for interaction.
+        document.addEventListener("DOMContentLoaded", () => {
+            console.info("Internal JavaScript loaded successfully.");
+        });
+    </script>
+</head>
+<body>
+    <main class="page-shell">
+        <header class="page-header">
+            <p class="eyebrow">Sprint B1 · Lab 1</p>
+            <h1>JavaScript Integration Practice</h1>
+            <p>Use these controls to practice console logging, exception handling, and DOM updates.</p>
+        </header>
+
+        <section class="panel" aria-labelledby="logging-heading">
+            <h2 id="logging-heading">1. Console logging</h2>
+            <p>Open Developer Tools and select the Console tab, then run the example.</p>
+            <button id="logButton" type="button">Log a debug message</button>
+        </section>
+
+        <section class="panel" aria-labelledby="error-heading">
+            <h2 id="error-heading">2. Try-catch error handling</h2>
+            <p>Run a normal division, then test the handled divide-by-zero case.</p>
+            <div class="button-row">
+                <button id="divideButton" type="button">Divide 10 by 2</button>
+                <button id="divideByZeroButton" class="secondary-button" type="button">Test divide by zero</button>
+            </div>
+            <p id="divisionOutput" class="result" aria-live="polite">Results will appear here.</p>
+        </section>
+
+        <section class="panel" aria-labelledby="dom-heading">
+            <h2 id="dom-heading">3. DOM manipulation and error handling</h2>
+            <p id="contentMessage">This text will be changed by JavaScript.</p>
+            <div class="button-row">
+                <button id="updateButton" type="button">Update page content</button>
+                <button id="missingElementButton" class="secondary-button" type="button">Test missing element</button>
+            </div>
+        </section>
+
+        <section class="panel" aria-labelledby="debug-heading">
+            <h2 id="debug-heading">4. Browser debugging tools</h2>
+            <p>With Developer Tools open, click the button and inspect the <code>debugValue</code> variable when execution pauses.</p>
+            <button id="breakpointButton" type="button">Run breakpoint example</button>
+            <p id="debugOutput" class="result" aria-live="polite">The breakpoint example has not run yet.</p>
+        </section>
+
+        <footer>
+            <p>Lab goal: integrate JavaScript, inspect the DOM, and practice debugging.</p>
+        </footer>
+    </main>
+</body>
+</html>

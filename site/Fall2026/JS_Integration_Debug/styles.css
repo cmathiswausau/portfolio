@@ -1,0 +1,115 @@
+/* Part 1: Basic styling for the JavaScript integration practice page. */
+:root {
+    color-scheme: light;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #243044;
+    background: #f2f5fa;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    line-height: 1.55;
+}
+
+.page-shell {
+    width: min(900px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 0 3rem;
+}
+
+.page-header {
+    margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+    margin-bottom: 0.35rem;
+    color: #496a9f;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+h1,
+h2 {
+    line-height: 1.2;
+}
+
+h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+}
+
+.panel {
+    margin: 1rem 0;
+    padding: 1.25rem;
+    border: 1px solid #d8dfeb;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 3px 12px rgb(36 48 68 / 5%);
+}
+
+button {
+    min-height: 42px;
+    padding: 0.65rem 1rem;
+    border: 0;
+    border-radius: 7px;
+    background: #315f9f;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #244b80;
+}
+
+button:focus-visible {
+    outline: 3px solid #f0b429;
+    outline-offset: 3px;
+}
+
+.secondary-button {
+    border: 1px solid #a7b4c8;
+    background: #eef2f8;
+    color: #243044;
+}
+
+.secondary-button:hover {
+    background: #dce5f2;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.result {
+    margin-bottom: 0;
+    padding: 0.75rem;
+    border-radius: 6px;
+    background: #f2f5fa;
+}
+
+code {
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    background: #edf0f5;
+}
+
+footer {
+    margin-top: 1.5rem;
+    color: #5d6879;
+    font-size: 0.9rem;
+}
