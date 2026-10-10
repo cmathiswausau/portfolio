@@ -8,3 +8,5 @@ package.json
 .vs
 /FileList.txt
 /Get-RecursiveFileList.ps1
+/site/Fall2026/FileList.txt
+/site/Fall2026/Get-RecursiveFileList.ps1
