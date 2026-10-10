@@ -6,3 +6,5 @@ package.json
 /.vs/
 *.zip
 .vs
+/FileList.txt
+/Get-RecursiveFileList.ps1
