@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error Handling &amp; DOM Manipulation Practice</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Part 1: Load the external JavaScript after the HTML is parsed. -->
+    <script src="script.js" defer></script>
+    <!-- Part 1: Demonstrate internal JavaScript integration. -->
+    <script>
+        console.info("Internal JavaScript loaded successfully.");
+    </script>
+</head>
+<body>
+    <main id="container">
+        <header class="page-header">
+            <p class="eyebrow">Sprint B1 · Lab 3</p>
+            <h1>Error Handling &amp; DOM Manipulation Practice</h1>
+            <p>
+                Practice safe array operations, render animal data in the DOM,
+                and inspect successful operations and handled errors in Developer Tools.
+            </p>
+        </header>
+
+        <section class="control-panel" aria-labelledby="controlsHeading">
+            <h2 id="controlsHeading">Array operation tests</h2>
+            <div class="button-group">
+                <button id="showAllButton" type="button">Show all animals (forEach)</button>
+                <button id="findAnimalButton" type="button">Find Raja (find)</button>
+                <button id="filterAnimalsButton" type="button">Filter elephants (filter)</button>
+                <button id="mapAnimalsButton" type="button">List names (map)</button>
+                <button id="addAnimalButton" type="button">Add giraffe (push)</button>
+                <button id="testArrayErrorButton" type="button">Test handled error</button>
+            </div>
+        </section>
+
+        <p id="statusMessage" class="status-message" aria-live="polite">
+            Animal records will appear below. Open Developer Tools with F12 to inspect console output.
+        </p>
+        <div id="errorSection" class="error-message" role="alert" aria-live="assertive" hidden></div>
+
+        <section id="animalSection" aria-labelledby="animalsHeading">
+            <div class="section-heading">
+                <h2 id="animalsHeading">Zoo animals</h2>
+                <span class="section-note">Created from the zooAnimals array</span>
+            </div>
+            <div id="animalGrid" class="animal-grid"></div>
+        </section>
+    </main>
+</body>
+</html>

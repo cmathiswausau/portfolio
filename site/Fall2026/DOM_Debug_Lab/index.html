@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation Practice</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Part 1: Load the external JavaScript after the HTML has been parsed. -->
+    <script src="script.js" defer></script>
+
+    <!-- Part 1: Demonstrate internal JavaScript integration. -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            console.info("Internal JavaScript loaded successfully.");
+        });
+    </script>
+</head>
+<body>
+    <main class="page-shell">
+        <header class="page-header">
+            <p class="eyebrow">Sprint B1 · Lab 2</p>
+            <h1>DOM Manipulation Practice</h1>
+            <p>Practice selecting DOM elements, updating page content, and handling errors.</p>
+        </header>
+
+        <section class="panel" aria-labelledby="animal-heading">
+            <h2 id="animal-heading">1. Animal DOM elements</h2>
+            <p>The animal cards below are populated by JavaScript using the supplied test data.</p>
+
+            <div id="animalSection" class="animal-section">
+                <div id="animal1" class="animal" aria-live="polite">
+                    Animal 1 is waiting to be populated.
+                </div>
+                <div id="animal2" class="animal" aria-live="polite">
+                    Animal 2 is waiting to be populated.
+                </div>
+            </div>
+
+            <div class="button-row">
+                <button id="populateAnimalsButton" type="button">Populate animal cards</button>
+                <button id="triggerErrorButton" class="secondary-button" type="button">Test handled error</button>
+            </div>
+        </section>
+
+        <section class="panel" aria-labelledby="error-heading">
+            <h2 id="error-heading">2. Error handling and debugging</h2>
+            <p>Open Developer Tools with F12. The error test intentionally requests an element ID that does not exist.</p>
+            <p id="errorOutput" class="status-message" role="status" aria-live="polite">
+                No errors have been detected.
+            </p>
+            <p class="hint">The test error should appear here and in the browser Console. It is caught by the code, so it should not stop the page from working.</p>
+        </section>
+
+        <footer class="page-footer">
+            <p>Lab goal: examine the DOM, update elements, and use browser Developer Tools to investigate errors.</p>
+        </footer>
+    </main>
+</body>
+</html>

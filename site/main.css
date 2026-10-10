@@ -603,3 +603,21 @@ input[type="submit"]:hover {
       scroll-behavior: auto !important;
    }
 }
+
+/* Sprint B1: Error-safe project data fallback and user-facing status messages */
+.project-gallery-message {
+   grid-column: 1 / -1;
+   margin: 0;
+   padding: 12px 14px;
+   border-left: 4px solid #4f6482;
+   border-radius: 4px;
+   background: #eef3fb;
+   color: #2f3e52;
+   font-weight: bold;
+}
+
+.project-gallery-message-error {
+   border-left-color: #b91c1c;
+   background: #fff7f7;
+   color: #7f1d1d;
+}

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Interactive NTC Zoo animal guide" />
-    <title>NTC Zoo | Interactive Animal Guide</title>
+    <meta name="description" content="Interactive NTC Zoo animal guide and error-safe zoo management practice" />
+    <title>NTC Zoo | Animal Guide and Management</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
 </head>
@@ -23,6 +23,39 @@
             <p>Select an animal below to learn about its habitat, behavior, and some interesting facts.</p>
         </section>
 
+
+        <!-- Part 3: Interactive zoo status and visitor management. -->
+        <section class="management-section" aria-labelledby="operations-heading">
+            <div class="management-section-heading">
+                <div>
+                    <p class="eyebrow">Part 3 · Interactive features</p>
+                    <h2 id="operations-heading">Zoo Operations</h2>
+                </div>
+                <p class="section-description">Manage opening status and track visitors with input validation.</p>
+            </div>
+
+            <div class="operations-grid">
+                <section class="operation-card" aria-labelledby="zoo-status-heading">
+                    <h3 id="zoo-status-heading">Zoo Status</h3>
+                    <p id="zooStatus" class="zoo-status-indicator status-open" role="status" aria-live="polite">Zoo is OPEN</p>
+                    <button id="toggleZooStatus" class="action-button" type="button">Close Zoo</button>
+                </section>
+
+                <section class="operation-card" aria-labelledby="visitor-heading">
+                    <h3 id="visitor-heading">Visitor Count</h3>
+                    <p class="visitor-total"><span id="visitorCount">0</span> <span>visitors currently inside</span></p>
+                    <div class="form-field">
+                        <label for="visitorAmount">Number of visitors</label>
+                        <input id="visitorAmount" name="visitorAmount" type="number" min="1" step="1" value="1" inputmode="numeric" />
+                    </div>
+                    <div class="button-row">
+                        <button id="checkInVisitors" class="action-button" type="button">Check In</button>
+                        <button id="checkOutVisitors" class="action-button action-secondary" type="button">Check Out</button>
+                    </div>
+                </section>
+            </div>
+        </section>
+
         <section class="animal-layout" aria-label="NTC Zoo animal guide">
             <div class="animal-list">
                 <h2>Meet the Animals</h2>
@@ -36,6 +69,60 @@
                 <p class="placeholder">Select an animal to begin exploring.</p>
             </article>
         </section>
+
+        <!-- Part 1: Validate required animal data before changing the zoo data array. -->
+        <section id="animalManagement" class="management-section" aria-labelledby="add-animal-heading">
+            <p class="eyebrow">Part 1 · Error-safe data structure</p>
+            <h2 id="add-animal-heading">Add an Animal</h2>
+            <p class="section-description">Every new animal needs a unique ID, name, species, and valid health status.</p>
+            <form id="animalForm" class="animal-form" novalidate>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="animalId">Unique ID</label>
+                        <input id="animalId" name="animalId" type="text" maxlength="30" autocomplete="off" required pattern="[A-Za-z0-9][A-Za-z0-9-]{1,29}" />
+                    </div>
+                    <div class="form-field">
+                        <label for="animalName">Name</label>
+                        <input id="animalName" name="animalName" type="text" maxlength="60" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="animalSpecies">Species</label>
+                        <input id="animalSpecies" name="animalSpecies" type="text" maxlength="60" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="animalHealthStatus">Health status</label>
+                        <select id="animalHealthStatus" name="animalHealthStatus" required>
+                            <option value="Healthy">Healthy</option>
+                            <option value="Under observation">Under observation</option>
+                            <option value="Needs veterinary care">Needs veterinary care</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="action-button" type="submit">Add Animal</button>
+            </form>
+        </section>
+
+        <!-- Part 2: Error-safe DOM feedback and developer-tools test controls. -->
+        <section class="management-section" aria-labelledby="application-messages-heading">
+            <p class="eyebrow">Part 2 · DOM manipulation and error handling</p>
+            <h2 id="application-messages-heading">Application Messages</h2>
+            <div id="errorSection" class="error-section" role="alert" aria-live="assertive"></div>
+            <p id="feedbackSection" class="feedback-message" role="status" aria-live="polite">Zoo data is ready.</p>
+        </section>
+
+        <section class="management-section debug-section" aria-labelledby="debugging-heading">
+            <details>
+                <summary id="debugging-heading">Debugging and error-handling tests</summary>
+                <p>Open browser Developer Tools (F12) and watch the Console while using these tests. The errors are intentional and should be caught by the application.</p>
+                <div class="button-row debug-buttons">
+                    <button id="testInvalidAnimal" class="action-button action-secondary" type="button">Test Invalid Animal Data</button>
+                    <button id="testMissingElement" class="action-button action-secondary" type="button">Test Missing DOM Element</button>
+                    <button id="logAnimalData" class="action-button action-secondary" type="button">Log Zoo Data with console.table()</button>
+                </div>
+            </details>
+        </section>
+
     <section class="endangered-section" aria-labelledby="endangered-heading">
         <div class="endangered-intro">
             <h2 id="endangered-heading">Endangered Species</h2>
@@ -100,7 +187,7 @@
 
     <footer>
         <div class="container">
-            <p>NTC Zoo Interactive Guide &mdash; Sprint A3 Zoo Assignment</p>
+            <p>NTC Zoo Animal Guide &mdash; Sprint B1 Zoo Assignment</p>
         </div>
     </footer>
 </body>

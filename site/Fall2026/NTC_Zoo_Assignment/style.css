@@ -335,3 +335,254 @@ footer {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* Sprint B1 Zoo Assignment: status management, visitor tracking, and error feedback. */
+.management-section {
+    margin: 1.25rem 0 2rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.management-section h2 {
+    margin-top: 0;
+    color: var(--primary-dark);
+}
+
+.management-section-heading {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.management-section-heading h2 {
+    margin-bottom: 0.25rem;
+}
+
+.management-section-heading .eyebrow,
+.management-section > .eyebrow {
+    margin: 0 0 0.25rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.operations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.operation-card {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fbfcfb;
+}
+
+.operation-card h3 {
+    margin-top: 0;
+    color: var(--primary-dark);
+}
+
+.zoo-status-indicator {
+    display: inline-block;
+    margin: 0 0 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.status-open {
+    color: #14532d;
+    background: #dcfce7;
+}
+
+.status-closed {
+    color: #991b1b;
+    background: #fee2e2;
+}
+
+.visitor-total {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin: 0 0 1rem;
+    color: var(--muted);
+}
+
+.visitor-total span:first-child {
+    color: var(--primary-dark);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.action-button {
+    display: inline-block;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 0.65rem 0.9rem;
+    background: var(--primary);
+    color: var(--white);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.action-button:hover,
+.action-button:focus-visible {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.action-button:focus-visible {
+    outline: 3px solid var(--error-focus);
+    outline-offset: 2px;
+}
+
+.action-secondary {
+    color: var(--primary-dark);
+    background: var(--secondary);
+}
+
+.action-secondary:hover,
+.action-secondary:focus-visible {
+    color: var(--white);
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 0.75rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.form-field label,
+.animal-health-box label {
+    font-weight: 700;
+}
+
+.form-field input,
+.form-field select,
+.animal-health-box select {
+    width: 100%;
+    min-height: 2.7rem;
+    border: 1px solid #9aa69e;
+    border-radius: 7px;
+    padding: 0.55rem 0.65rem;
+    color: var(--text);
+    background: var(--white);
+    font: inherit;
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.animal-health-box select:focus-visible {
+    outline: 3px solid var(--error-focus);
+    outline-offset: 1px;
+}
+
+.section-description {
+    color: var(--muted);
+}
+
+.animal-health-box {
+    display: grid;
+    grid-template-columns: minmax(130px, auto) minmax(180px, 1fr);
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fbfcfb;
+}
+
+.no-animal-image {
+    margin: 0;
+    padding: 2rem 1rem;
+    color: var(--muted);
+    text-align: center;
+    background: var(--secondary);
+}
+
+.error-section:empty {
+    display: none;
+}
+
+.error-message {
+    margin: 0.75rem 0;
+    padding: 0.85rem 1rem;
+    border-left: 5px solid #b91c1c;
+    border-radius: 6px;
+    color: #7f1d1d;
+    background: #fef2f2;
+    overflow-wrap: anywhere;
+}
+
+.feedback-message {
+    margin: 1rem 0 0;
+    padding: 0.8rem 1rem;
+    border-left: 4px solid var(--accent);
+    background: var(--secondary);
+    color: var(--text);
+}
+
+.debug-section summary {
+    color: var(--primary-dark);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.debug-section details > p {
+    color: var(--muted);
+}
+
+.debug-buttons {
+    margin-top: 1rem;
+}
+
+@media (max-width: 750px) {
+    .operations-grid,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .management-section-heading {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .management-section {
+        padding: 1rem;
+    }
+
+    .animal-health-box {
+        grid-template-columns: 1fr;
+    }
+
+    .action-button {
+        width: 100%;
+    }
+}
