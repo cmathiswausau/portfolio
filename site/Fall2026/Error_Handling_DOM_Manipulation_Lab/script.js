@@ -142,7 +142,7 @@ const findAnimal = () => {
         console.log("Array method .find() result:", foundAnimal);
 
         if (!foundAnimal) {
-            throw new Error('Animal named "Raja" was not found.');
+            throw new Error("Animal named \"Raja\" was not found.");
         }
 
         renderAnimals([foundAnimal]);
