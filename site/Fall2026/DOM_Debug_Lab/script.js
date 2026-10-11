@@ -1,4 +1,5 @@
 // Part 2: DOM manipulation practice and error handling.
+// This section defines the sample records, safe DOM updates, and visible error reporting.
 
 // Test data matching the zoo assignment's simple animal-object structure.
 const animals = [
@@ -6,6 +7,7 @@ const animals = [
     { id: "animal2", name: "Tiger" }
 ];
 
+// Keep error reporting in one helper so expected failures are shown consistently.
 /**
  * Display a handled DOM error on the page and in the browser Console.
  * @param {string} message - The error message to display.
@@ -55,6 +57,7 @@ const updateAnimalContent = (animalId, animalData) => {
 };
 
 // Part 3: Connect the DOM-manipulation function to page controls.
+// Cache the controls, then attach handlers only when the corresponding HTML exists.
 const populateAnimalsButton = document.querySelector("#populateAnimalsButton");
 const triggerErrorButton = document.querySelector("#triggerErrorButton");
 
@@ -62,6 +65,7 @@ const triggerErrorButton = document.querySelector("#triggerErrorButton");
  * Populate each animal card from the test data.
  */
 const populateAnimals = () => {
+    // Reuse the same safe update function for each record instead of duplicating DOM logic.
     animals.forEach((animal) => {
         updateAnimalContent(animal.id, animal);
     });
@@ -80,5 +84,5 @@ if (triggerErrorButton) {
     });
 }
 
-// Populate the animal elements on initial page load.
+// Populate the animal elements on initial page load so the page is useful before a click.
 populateAnimals();

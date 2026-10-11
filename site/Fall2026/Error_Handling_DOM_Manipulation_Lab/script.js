@@ -1,4 +1,6 @@
 // Part 2: Array data, error-safe array operations, and DOM manipulation.
+// The sample array is the single source of data for the forEach, find, filter, map,
+// and push demonstrations below.
 
 // Animal objects follow the simple data structure used in the zoo assignment.
 const zooAnimals = [
@@ -10,6 +12,7 @@ const animalGrid = document.querySelector("#animalGrid");
 const errorSection = document.querySelector("#errorSection");
 const statusMessage = document.querySelector("#statusMessage");
 
+// The following helpers keep error handling, clearing, and status updates consistent.
 /**
  * Display a handled error on the page and in the browser Console.
  * @param {string} message - The error message to display.
@@ -50,6 +53,7 @@ const updateStatus = (message) => {
     console.info(message);
 };
 
+// Render one record at a time; textContent prevents animal values from being parsed as HTML.
 /**
  * Create an animal card using text-safe DOM APIs.
  * @param {{id: string, name: string, species: string}} animalData - The animal record to display.
@@ -88,6 +92,7 @@ const displayAnimal = (animalData) => {
     }
 };
 
+// Shared rendering path used by the array-method examples, including empty results.
 /**
  * Render an array of animal records in the DOM using forEach.
  * @param {Array<{id: string, name: string, species: string}>} animalsToDisplay - The records to render.
@@ -122,6 +127,7 @@ const renderAnimals = (animalsToDisplay) => {
     }
 };
 
+// Array method examples: each helper performs one operation and then displays its result.
 /**
  * Show every animal record in the zooAnimals array.
  */
@@ -135,6 +141,7 @@ const showAllAnimals = () => {
  */
 const findAnimal = () => {
     try {
+        // find() returns the first matching record, or undefined when no match exists.
         const foundAnimal = zooAnimals.find((animal) => {
             return animal.name === "Raja";
         });
@@ -158,6 +165,7 @@ const findAnimal = () => {
  */
 const filterElephants = () => {
     try {
+        // filter() creates a new array containing only records for elephant species.
         const elephants = zooAnimals.filter((animal) => {
             return animal.species === "Elephant";
         });
@@ -176,6 +184,7 @@ const filterElephants = () => {
  */
 const listAnimalNames = () => {
     try {
+        // map() transforms the animal records into a separate array of name strings.
         const animalNames = zooAnimals.map((animal) => {
             return animal.name;
         });
@@ -195,6 +204,7 @@ const listAnimalNames = () => {
  */
 const addAnimal = (animalData) => {
     try {
+        // Validate the collection and record before push() changes the shared array.
         if (!Array.isArray(zooAnimals)) {
             throw new Error("The zoo animal collection is not a valid array.");
         }
@@ -216,6 +226,7 @@ const addAnimal = (animalData) => {
             throw new Error(`An animal with ID "${animalData.id}" already exists.`);
         }
 
+        // push() mutates the array, so the shared renderer is refreshed after the addition.
         zooAnimals.push(animalData);
         console.log("Array method .push() added this record:", animalData);
         renderAnimals(zooAnimals);
@@ -250,6 +261,7 @@ const testHandledArrayError = () => {
 };
 
 // Part 3: Connect each array operation to its corresponding page button.
+// Keep event registration separate from the operation functions so each action can be tested.
 const showAllButton = document.querySelector("#showAllButton");
 const findAnimalButton = document.querySelector("#findAnimalButton");
 const filterAnimalsButton = document.querySelector("#filterAnimalsButton");
@@ -283,7 +295,8 @@ if (testArrayErrorButton) {
     testArrayErrorButton.addEventListener("click", testHandledArrayError);
 }
 
-// Part 2: Log initial data and render the starting animal objects.
+// Startup: log the initial sample data and render the starting animal objects.
+// This also demonstrates the default page state before any button is clicked.
 console.info("Zoo animal array initialized.");
 console.log("Initial zooAnimals array:", zooAnimals);
 showAllAnimals();

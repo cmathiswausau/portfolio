@@ -1,4 +1,6 @@
 // Part 2: JavaScript integration and debugging practice.
+// These small helpers keep the logging, calculation, and DOM update logic separate
+// from the buttons that demonstrate each behavior later in the file.
 
 // Log a message to the browser console so it can be inspected in Developer Tools.
 const logMessage = (message) => {
@@ -39,7 +41,9 @@ const updateContent = (elementId, newContent) => {
 };
 
 // Part 3: Connect the practice functions to the HTML controls.
+// Wait until the HTML has been parsed so every query can find the page controls.
 document.addEventListener("DOMContentLoaded", () => {
+    // Cache the controls and output areas once instead of querying them on every click.
     const logButton = document.querySelector("#logButton");
     const divideButton = document.querySelector("#divideButton");
     const divideByZeroButton = document.querySelector("#divideByZeroButton");
@@ -89,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Demonstrate stepping through code and inspecting a local variable in DevTools.
+    // The button is guarded so the debugging example only runs when both elements exist.
     if (breakpointButton && debugOutput) {
         breakpointButton.addEventListener("click", () => {
             const debugValue = 42;

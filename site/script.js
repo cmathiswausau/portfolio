@@ -1,4 +1,5 @@
 // Part 1: Error-safe project data management and validation.
+// Validate project records before rendering; invalid or missing data gets a safe fallback.
 // Project records are checked before they are rendered so incomplete or invalid
 // data cannot break the project gallery.
 const projects = [
@@ -51,6 +52,7 @@ const fallbackProjects = [
     }
 ];
 
+// Data validation helpers are shared by project checks and safe DOM rendering.
 /**
  * Check whether a value is a non-empty string.
  * @param {unknown} value Value to check.
@@ -74,6 +76,7 @@ function isValidProject(project) {
         return false;
     }
 
+    // Required properties must have the expected types before any gallery elements are built.
     const hasValidRequiredFields =
         typeof project.id === "number" &&
         Number.isInteger(project.id) &&
@@ -86,6 +89,7 @@ function isValidProject(project) {
         typeof project.image === "string" &&
         typeof project.alt === "string";
 
+    // Optional links are limited to HTTP(S) URLs; other schemes are not rendered as links.
     const hasSafeOptionalLink =
         project.link === undefined ||
         (typeof project.link === "string" && /^https?:\/\//u.test(project.link));
@@ -137,6 +141,7 @@ function loadProjects(data) {
 }
 
 // Part 2: Error-safe DOM manipulation and project gallery fallback display.
+// Create text and card elements through DOM APIs so project data is not interpreted as HTML.
 
 /**
  * Create an accessible status message without inserting HTML strings.
@@ -165,6 +170,7 @@ function createProjectCard(project) {
     const card = document.createElement("article");
     card.className = "project-card";
 
+    // An image is optional; hide a broken image at runtime rather than leaving a broken icon.
     if (isNonEmptyString(project.image)) {
         const image = document.createElement("img");
         image.src = project.image;
@@ -200,6 +206,7 @@ function createProjectCard(project) {
     content.appendChild(description);
     content.appendChild(technologyList);
 
+    // Open only links already checked for HTTP(S), and isolate the new tab from its opener.
     if (typeof project.link === "string" && /^https?:\/\//u.test(project.link)) {
         const link = document.createElement("a");
         link.href = project.link;
@@ -228,6 +235,7 @@ function createProjectGallery() {
     }
 
     try {
+        // Collect the complete gallery off-DOM, then replace the visible content in one operation.
         const projectResult = loadProjects(projects);
         const galleryContent = [];
 
@@ -265,6 +273,7 @@ function createProjectGallery() {
 }
 
 // Part 3: Contact form validation and safe interactive features.
+// The contact form validates locally for this assignment; it deliberately sends no network request.
 
 /**
  * Validate a required text field and update its accessible error feedback.
@@ -308,6 +317,7 @@ function validateEmail(input, feedback) {
         return false;
     }
 
+    // Trim whitespace before applying a basic email-format check.
     const email = input.value.trim();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/u;
 
@@ -388,6 +398,7 @@ function setupContactForm() {
         return;
     }
 
+    // Revalidate fields as the visitor types so feedback clears as the input is corrected.
     name.addEventListener("input", () => {
         validateField(name, nameFeedback, "Name is required.");
     });
@@ -418,6 +429,7 @@ function setupContactForm() {
                 formStatus.textContent = "Please correct the highlighted fields before submitting.";
                 formStatus.className = "form-status form-status-error";
 
+                // Move focus to the first invalid field so the visitor can correct it immediately.
                 const firstInvalidField = [
                     [name, nameValid],
                     [email, emailValid],
@@ -451,6 +463,7 @@ function setupContactForm() {
     });
 }
 
+// Navigation setup is guarded because the responsive menu may not exist on every page.
 /**
  * Set up the responsive navigation button with guarded DOM access.
  * Parameters: none.
@@ -475,6 +488,7 @@ function setupNavigation() {
     });
 }
 
+// Run the page features independently, allowing the gallery, form, or menu to fail separately.
 /**
  * Initialize each portfolio feature independently so one failure does not stop the others.
  * Parameters: none.

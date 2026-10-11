@@ -4,6 +4,7 @@ Project: NTC Zoo - Sprint B1 Zoo Assignment
 */
 
 // Part 1: Error-safe zoo data structure and validation.
+// This section defines allowed health statuses, the original animal records, and app state.
 // The original CSWD1A animal profiles are preserved and augmented with species and health status.
 
 /**
@@ -102,6 +103,7 @@ let visitorCount = 0;
 let selectedAnimalId = animals[0].id;
 
 // Part 2: DOM manipulation with error handling.
+// DOM helpers below centralize required-element checks, user feedback, and error logging.
 
 /**
  * Finds a required element and throws a useful error when it is absent.
@@ -177,6 +179,7 @@ const displayFeedback = (message) => {
     feedbackSection.textContent = message;
 };
 
+// Validate all fields before an animal is added so invalid data cannot partially mutate the zoo.
 /**
  * Validates and normalizes animal data before changing the zoo array.
  * @param {object} animalData - Candidate animal data received from the form or a test.
@@ -191,8 +194,10 @@ const validateAnimalData = (animalData) => {
         throw new Error("Animal ID is required.");
     }
 
+    // Normalize IDs so comparisons are case-insensitive and surrounding spaces are ignored.
     const id = animalData.id.trim().toLowerCase();
 
+    // Restrict IDs to a predictable 2–30 character format suitable for unique record keys.
     if (!/^[a-z0-9][a-z0-9-]{1,29}$/u.test(id)) {
         throw new Error("Animal ID must be 2–30 characters and use only letters, numbers, or hyphens.");
     }
@@ -209,6 +214,7 @@ const validateAnimalData = (animalData) => {
         throw new Error("Choose a valid health status for the animal.");
     }
 
+    // Reject duplicate IDs before returning the normalized record.
     const duplicateAnimal = animals.some((animal) => animal.id === id);
 
     if (duplicateAnimal) {
@@ -222,6 +228,7 @@ const validateAnimalData = (animalData) => {
         throw new Error("Animal name and species must each be 60 characters or fewer.");
     }
 
+    // Optional profile fields receive safe defaults so every displayed record has a stable shape.
     return {
         id,
         name,
@@ -239,6 +246,7 @@ const validateAnimalData = (animalData) => {
     };
 };
 
+// Animal rendering: rebuild the selection controls and details from the current shared array.
 /**
  * Creates the original animal-selection buttons, including any newly added animals.
  * @returns {void} This function does not return a value.
@@ -248,6 +256,7 @@ const createAnimalButtons = () => {
         const animalButtons = getRequiredElement("animalButtons");
         animalButtons.replaceChildren();
 
+        // Rebuilding from the data array ensures animals added at runtime get a button too.
         animals.forEach((animal) => {
             const button = document.createElement("button");
             button.type = "button";
@@ -294,6 +303,7 @@ const renderAnimalDetails = (animal) => {
         animalDetails.appendChild(noImageMessage);
     }
 
+    // Build the profile with DOM nodes and textContent rather than inserting HTML strings.
     const content = document.createElement("div");
     content.className = "animal-content";
 
@@ -319,6 +329,7 @@ const renderAnimalDetails = (animal) => {
     healthSelect.name = "selectedAnimalHealth";
     healthSelect.setAttribute("aria-label", `Health status for ${animal.name}`);
 
+    // Keep the dropdown options aligned with the same approved statuses used by validation.
     HEALTH_STATUSES.forEach((status) => {
         const option = document.createElement("option");
         option.value = status;
@@ -375,6 +386,7 @@ const renderAnimalDetails = (animal) => {
     animalDetails.appendChild(content);
 };
 
+// Selection and data changes: update application state first, then refresh the visible UI.
 /**
  * Displays an animal record and updates the selection state safely.
  * @param {string} animalId - The unique ID of the animal to display.
@@ -388,6 +400,7 @@ const selectAnimal = (animalId) => {
             throw new Error(`No animal was found with ID '${animalId}'.`);
         }
 
+        // Keep the internal selected ID and accessible button state in sync with the profile.
         selectedAnimalId = animal.id;
         document.querySelectorAll(".animal-button").forEach((button) => {
             button.setAttribute("aria-selected", String(button.textContent === animal.name));
@@ -408,6 +421,7 @@ const selectAnimal = (animalId) => {
  */
 const addAnimal = (animalData) => {
     try {
+        // Only append after validation succeeds; rejected input leaves the array unchanged.
         const validatedAnimal = validateAnimalData(animalData);
         animals.push(validatedAnimal);
         createAnimalButtons();
@@ -472,6 +486,7 @@ const logZooData = () => {
 };
 
 // Part 3: Interactive zoo status, health updates, and visitor management.
+// The following helpers synchronize the zoo's operational state with its visible controls.
 
 /**
  * Updates the visible zoo status and the status-toggle button.
@@ -508,6 +523,7 @@ const adjustVisitors = (direction) => {
             throw new Error("Enter a whole number of visitors greater than zero.");
         }
 
+        // Validate whether the selected direction is allowed before changing the visitor count.
         if (direction === "checkIn") {
             if (!zooIsOpen) {
                 throw new Error("Visitors cannot check in while the zoo is closed.");
@@ -533,6 +549,7 @@ const adjustVisitors = (direction) => {
     }
 };
 
+// Form and test handlers translate user actions into calls to the shared validation logic.
 /**
  * Handles the add-animal form and lets validation report any invalid input.
  * @param {SubmitEvent} event - The form submission event.
@@ -616,6 +633,7 @@ const bindAccordionButtons = () => {
     });
 };
 
+// Register listeners once during startup; each callback delegates to the helpers above.
 /**
  * Connects application controls to their error-safe event handlers.
  * @returns {void} This function does not return a value.
@@ -649,6 +667,7 @@ const bindEventListeners = () => {
     bindAccordionButtons();
 };
 
+// Initialization order matters: wire controls, build buttons, render the selection, then status.
 /**
  * Initializes the animal guide and zoo management controls safely.
  * @returns {void} This function does not return a value.

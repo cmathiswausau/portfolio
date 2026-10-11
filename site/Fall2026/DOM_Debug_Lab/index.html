@@ -11,6 +11,7 @@
 
     <!-- Part 1: Demonstrate internal JavaScript integration. -->
     <script>
+        // Confirm that this page's inline script runs after its HTML has been parsed.
         document.addEventListener("DOMContentLoaded", () => {
             console.info("Internal JavaScript loaded successfully.");
         });
