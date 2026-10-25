@@ -99,6 +99,14 @@
                 </div>
                 <p class="skill-note">C# and Python are current areas of academic study during the final year of my software-development education.</p>
 
+                <div id="scrollHighlights" class="scroll-highlights" aria-labelledby="highlightsTitle">
+                    <h2 id="highlightsTitle">Explore My Work</h2>
+                    <div id="highlightCards"></div>
+                    <p id="highlightStatus" role="status">Scroll to discover portfolio highlights.</p>
+                    <button id="loadHighlights" type="button">Load more highlights</button>
+                    <noscript><p>Explore my <a href="projects.html">projects</a> and <a href="resume-software.html">software resume</a>.</p></noscript>
+                </div>
+
                 <!-- Professional Endorsements -->
                 <h2>Professional Endorsements</h2>
                 <p>
@@ -173,7 +181,22 @@
         </footer>
     </div>
 
+
+    <button id="backToTop" class="back-to-top" type="button" hidden>↑ Back to top</button>
+    <button id="chatToggle" class="chat-toggle" type="button" aria-expanded="false" aria-controls="chatPanel">Chat (demo)</button>
+    <div id="chatPanel" class="chat-panel" role="region" aria-labelledby="chatTitle" hidden>
+        <div class="chat-heading"><h2 id="chatTitle">Portfolio chat</h2><button id="chatClose" type="button" aria-label="Close chat">×</button></div>
+        <p class="chat-disclaimer">Mock chat: automated replies only. Messages stay on this page and are cleared when you leave.</p>
+        <div id="chatMessages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions"><p>Assistant: Hello! Ask about skills, projects, or contacting Chris.</p></div>
+        <form id="chatForm">
+            <label for="chatInput">Your message</label>
+            <input id="chatInput" name="chatMessage" type="text" maxlength="300" required="required" autocomplete="off" />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
     <script src="script.js"></script>
+    <script src="ux.js"></script>
 </body>
 
 </html>

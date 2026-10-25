@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive NTC Zoo animal guide and error-safe zoo management practice" />
+    <title>NTC Zoo | Animal Guide and Management</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script src="contact.js" defer></script>
+    <script src="visitor-guide.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <p class="eyebrow">Northcentral Technical College</p>
+            <h1>NTC Zoo</h1>
+            <p class="tagline">Explore the animals and discover something new.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro" aria-labelledby="guide-heading">
+            <h2 id="guide-heading">Animal Guide</h2>
+            <p>Select an animal below to learn about its habitat, behavior, and some interesting facts.</p>
+        </section>
+
+
+        <!-- Part 3: Interactive zoo status and visitor management. -->
+        <section class="management-section" aria-labelledby="operations-heading">
+            <div class="management-section-heading">
+                <div>
+                    <p class="eyebrow">Part 3 · Interactive features</p>
+                    <h2 id="operations-heading">Zoo Operations</h2>
+                </div>
+                <p class="section-description">Manage opening status and track visitors with input validation.</p>
+            </div>
+
+            <div class="operations-grid">
+                <section class="operation-card" aria-labelledby="zoo-status-heading">
+                    <h3 id="zoo-status-heading">Zoo Status</h3>
+                    <p id="zooStatus" class="zoo-status-indicator status-open" role="status" aria-live="polite">Zoo is OPEN</p>
+                    <button id="toggleZooStatus" class="action-button" type="button">Close Zoo</button>
+                </section>
+
+                <section class="operation-card" aria-labelledby="visitor-heading">
+                    <h3 id="visitor-heading">Visitor Count</h3>
+                    <p class="visitor-total"><span id="visitorCount">0</span> <span>visitors currently inside</span></p>
+                    <div class="form-field">
+                        <label for="visitorAmount">Number of visitors</label>
+                        <input id="visitorAmount" name="visitorAmount" type="number" min="1" step="1" value="1" inputmode="numeric" />
+                    </div>
+                    <div class="button-row">
+                        <button id="checkInVisitors" class="action-button" type="button">Check In</button>
+                        <button id="checkOutVisitors" class="action-button action-secondary" type="button">Check Out</button>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="animal-layout" aria-label="NTC Zoo animal guide">
+            <div class="animal-list">
+                <h2>Meet the Animals</h2>
+
+                <div id="animalButtons" class="animal-buttons">
+                    <!-- Buttons are created dynamically with JavaScript. -->
+                </div>
+            </div>
+
+            <article id="animalDetails" class="animal-details" aria-live="polite">
+                <p class="placeholder">Select an animal to begin exploring.</p>
+            </article>
+        </section>
+
+        <!-- Part 1: Validate required animal data before changing the zoo data array. -->
+        <section id="animalManagement" class="management-section" aria-labelledby="add-animal-heading">
+            <p class="eyebrow">Part 1 · Error-safe data structure</p>
+            <h2 id="add-animal-heading">Add an Animal</h2>
+            <p class="section-description">Every new animal needs a unique ID, name, species, and valid health status.</p>
+            <form id="animalForm" class="animal-form" novalidate>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="animalId">Unique ID</label>
+                        <input id="animalId" name="animalId" type="text" maxlength="30" autocomplete="off" required pattern="[A-Za-z0-9][A-Za-z0-9-]{1,29}" />
+                    </div>
+                    <div class="form-field">
+                        <label for="animalName">Name</label>
+                        <input id="animalName" name="animalName" type="text" maxlength="60" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="animalSpecies">Species</label>
+                        <input id="animalSpecies" name="animalSpecies" type="text" maxlength="60" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="animalHealthStatus">Health status</label>
+                        <select id="animalHealthStatus" name="animalHealthStatus" required>
+                            <option value="Healthy">Healthy</option>
+                            <option value="Under observation">Under observation</option>
+                            <option value="Needs veterinary care">Needs veterinary care</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="action-button" type="submit">Add Animal</button>
+            </form>
+        </section>
+
+
+        <!-- Sprint B2: Five interactive visitor guide features. -->
+        <section class="management-section visitor-guide" id="visitor-guide" aria-labelledby="visitorGuideHeading">
+            <p class="eyebrow">Sprint B2 · Plan your visit</p>
+            <h2 id="visitorGuideHeading">Your day at NTC Zoo</h2>
+            <nav class="guide-links" aria-label="Visitor guide"><a href="#zoo-timeline">Exhibit history</a><a href="#zoo-walk">Walking routes</a><a href="#zoo-events">Activities</a><a href="#zoo-donate">Donate</a><a href="#zoo-feedback">Feedback</a></nav>
+            <!-- Part 1: Interactive exhibit timeline. -->
+            <section class="guide-panel" id="zoo-timeline" aria-labelledby="timelineHeading">
+                <h3 id="timelineHeading">Our exhibit story</h3>
+                <p>Explore sample milestones. This is fictional history for the NTC Zoo coursework.</p>
+                <div id="timelineButtons" class="guide-buttons" role="group" aria-label="Choose a year"></div>
+                <div class="guide-highlight" aria-live="polite"><h4 id="timelineTitle"></h4><p id="timelineDetail"></p></div>
+            </section>
+            <!-- Part 2: Shortest route and walking time on a sample trail network. -->
+            <section class="guide-panel" id="zoo-walk" aria-labelledby="walkHeading">
+                <h3 id="walkHeading">Find your next adventure</h3>
+                <p>Estimated distances use a demonstration trail network, not a surveyed zoo map. Times exclude stops.</p>
+                <form id="walkForm" class="guide-form">
+                    <div class="form-field"><label for="walkStart">From exhibit</label><select id="walkStart"></select></div>
+                    <div class="form-field"><label for="walkEnd">To exhibit</label><select id="walkEnd"></select></div>
+                    <div class="form-field"><label for="walkSpeed">Walking pace</label><select id="walkSpeed"><option value="50">Relaxed · 50 m/min</option><option value="75" selected>Regular · 75 m/min</option><option value="100">Brisk · 100 m/min</option></select></div>
+                    <button type="submit" class="action-button">Calculate walk</button>
+                </form>
+                <p id="walkResult" class="guide-highlight" role="status">Choose two exhibits to plan your route.</p>
+            </section>
+            <!-- Part 3: Dynamic monthly calendar and date-specific activities. -->
+            <section class="guide-panel" id="zoo-events" aria-labelledby="eventsHeading">
+                <h3 id="eventsHeading">What's happening at the zoo</h3>
+                <p>Sample recurring schedule: daily keeper talks, weekend penguin sessions, and Wednesday enrichment.</p>
+                <div class="guide-buttons calendar-controls"><button id="previousMonth" type="button" aria-label="Previous month">Previous</button><h4 id="calendarMonth" aria-live="polite"></h4><button id="nextMonth" type="button" aria-label="Next month">Next</button><button id="currentMonth" type="button">This month</button></div>
+                <div class="calendar-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+                <div id="calendarDays" class="calendar-days" role="group" aria-label="Choose an activity date"></div>
+                <div class="guide-highlight" aria-live="polite"><h4 id="eventDate"></h4><ul id="eventList"></ul></div>
+            </section>
+            <!-- Part 4: Suggested and custom donation amounts. -->
+            <section class="guide-panel" id="zoo-donate" aria-labelledby="donateHeading">
+                <h3 id="donateHeading">Help care for our animals</h3>
+                <p>Demonstration pledge form. No money is collected and no payment details are requested.</p>
+                <form id="donationForm" novalidate>
+                    <div id="donationAmounts" class="guide-buttons" role="group" aria-label="Suggested donation amounts"><button type="button" data-amount="10" aria-pressed="false">$10</button><button type="button" data-amount="25" aria-pressed="true">$25</button><button type="button" data-amount="50" aria-pressed="false">$50</button><button type="button" data-amount="100" aria-pressed="false">$100</button></div>
+                    <div class="form-field"><label for="customDonation">Or enter a custom amount in USD ($1–$10,000)</label><input id="customDonation" type="text" inputmode="decimal" maxlength="8" placeholder="e.g. 35.50" /></div>
+                    <button class="action-button" type="submit">Make a demo pledge</button>
+                </form>
+                <p id="donationStatus" role="status">$25 selected.</p>
+            </section>
+            <!-- Part 5: Exhibit ratings and safely displayed visitor comments. -->
+            <section class="guide-panel" id="zoo-feedback" aria-labelledby="reviewHeading">
+                <h3 id="reviewHeading">Tell us about your visit</h3>
+                <p>Reviews stay in this browser. The latest 50 are retained; they are not shared with other visitors.</p>
+                <form id="reviewForm" class="guide-form" novalidate>
+                    <div class="form-field"><label for="reviewExhibit">Exhibit</label><select id="reviewExhibit"></select></div>
+                    <div class="form-field"><label for="reviewRating">Rating</label><select id="reviewRating"><option value="">Choose a rating</option><option value="5">5 · Excellent</option><option value="4">4 · Very good</option><option value="3">3 · Good</option><option value="2">2 · Fair</option><option value="1">1 · Poor</option></select></div>
+                    <div class="form-field"><label for="reviewComment">Your comments (maximum 500 characters)</label><textarea id="reviewComment" rows="4" maxlength="500" required></textarea></div>
+                    <button class="action-button" type="submit">Save feedback</button>
+                </form>
+                <p id="reviewStatus" role="status"></p><p id="ratingSummary" aria-live="polite"></p><ul id="reviewList" class="review-list"></ul>
+            </section>
+        </section>
+
+        <!-- Buffer and SQL Prevention — Part 1: Validated contact form. -->
+        <section class="management-section" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact NTC Zoo</h2>
+            <p>Preview your message. This demonstration does not send email.</p>
+            <form id="contactForm" novalidate>
+                <input type="hidden" id="csrfToken" name="csrfToken" />
+                <div class="form-field">
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" aria-describedby="nameLength" name="name" autocomplete="name" maxlength="100" required />
+                    <small id="nameLength" aria-live="polite">0/100 characters</small>
+                </div>
+                <div class="form-field">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" aria-describedby="emailLength" name="email" autocomplete="email" maxlength="254" required />
+                    <small id="emailLength" aria-live="polite">0/254 characters</small>
+                </div>
+                <div class="form-field">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" aria-describedby="messageLength" name="message" rows="6" maxlength="2000" required></textarea>
+                    <small id="messageLength" aria-live="polite">0/2000 characters</small>
+                </div>
+                <button class="action-button" type="submit">Preview Message</button>
+            </form>
+            <p id="contactFeedback" role="status" aria-live="polite"></p>
+            <div id="contactResults" hidden></div>
+        </section>
+
+        <!-- Part 2: Error-safe DOM feedback and developer-tools test controls. -->
+        <section class="management-section" aria-labelledby="application-messages-heading">
+            <p class="eyebrow">Part 2 · DOM manipulation and error handling</p>
+            <h2 id="application-messages-heading">Application Messages</h2>
+            <div id="errorSection" class="error-section" role="alert" aria-live="assertive"></div>
+            <p id="feedbackSection" class="feedback-message" role="status" aria-live="polite">Zoo data is ready.</p>
+        </section>
+
+        <section class="management-section debug-section" aria-labelledby="debugging-heading">
+            <details>
+                <summary id="debugging-heading">Debugging and error-handling tests</summary>
+                <p>Open browser Developer Tools (F12) and watch the Console while using these tests. The errors are intentional and should be caught by the application.</p>
+                <div class="button-row debug-buttons">
+                    <button id="testInvalidAnimal" class="action-button action-secondary" type="button">Test Invalid Animal Data</button>
+                    <button id="testMissingElement" class="action-button action-secondary" type="button">Test Missing DOM Element</button>
+                    <button id="logAnimalData" class="action-button action-secondary" type="button">Log Zoo Data with console.table()</button>
+                </div>
+            </details>
+        </section>
+
+    <section class="endangered-section" aria-labelledby="endangered-heading">
+        <div class="endangered-intro">
+            <h2 id="endangered-heading">Endangered Species</h2>
+            <p>Learn more about animals facing serious conservation challenges and the work being done to protect them.</p>
+        </div>
+
+        <div class="endangered-grid">
+            <article class="endangered-card">
+                <img src="https://nationalzoo.si.edu/sites/default/files/paragraphs/single_image/20190226-bridgetisrael02.jpg" alt="Tiger resting in its habitat" loading="lazy" />
+                <div class="endangered-card-content">
+                    <p class="conservation-status">Endangered</p>
+                    <h3> Tiger</h3>
+                    <p>Tigers are large cats native to Asia. Habitat loss and other human pressures have contributed to major declines in their historic range.</p>
+                    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="tiger-info">
+                        <span>More about tigers</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                    <div id="tiger-info" class="accordion-panel" hidden>
+                        <p>Tigers occupy forests, grasslands, and mangrove habitats. Conservation programs include protected areas, research, and managed breeding programs.</p>
+                        <p class="source">Source: <a href="https://nationalzoo.si.edu/animals/tiger" target="_blank" rel="noopener">Smithsonian's National Zoo</a></p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="endangered-card">
+                <img src="https://nationalzoo.si.edu/sites/default/files/styles/max_650x650/public/paragraphs/single_image/penguins_and_chick.jpg?itok=Z3HXX9_e" alt="African penguin standing near another penguin" loading="lazy" />
+                <div class="endangered-card-content">
+                    <p class="conservation-status">Critically Endangered</p>
+                    <h3>African Penguin</h3>
+                    <p>African penguins are coastal birds that spend much of their lives at sea and return to land to breed and raise chicks.</p>
+                    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="penguin-info">
+                        <span>More about African penguins</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                    <div id="penguin-info" class="accordion-panel" hidden>
+                        <p>They are excellent swimmers and depend on healthy coastal and marine ecosystems. Conservation efforts focus on protecting breeding colonies and their food sources.</p>
+                        <p class="source">Source: <a href="https://nationalzoo.si.edu/animals" target="_blank" rel="noopener">Smithsonian's National Zoo</a></p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="endangered-card">
+                <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Elephant%20(1).jpg" alt="African elephant walking outdoors" loading="lazy" />
+                <div class="endangered-card-content">
+                    <p class="conservation-status">Endangered</p>
+                    <h3>African Elephant</h3>
+                    <p>African elephants are the largest living land animals and use their trunks for feeding, drinking, communication, and handling objects.</p>
+                    <button class="accordion-button" type="button" aria-expanded="false" aria-controls="elephant-info">
+                        <span>More about African elephants</span>
+                        <span aria-hidden="true">+</span>
+                    </button>
+                    <div id="elephant-info" class="accordion-panel" hidden>
+                        <p>African elephants live in a range of habitats and face threats including habitat loss and illegal killing. Conservation work includes protecting habitat and supporting anti-poaching efforts.</p>
+                        <p class="source">Source: <a href="https://nationalzoo.si.edu/animals" target="_blank" rel="noopener">Smithsonian's National Zoo</a></p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>NTC Zoo Animal Guide &mdash; Sprint B1 Zoo Assignment</p>
+        </div>
+    </footer>
+</body>
+</html>
