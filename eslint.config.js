@@ -2,7 +2,7 @@ import eslint from "@eslint/js";
 import jsdoc from "eslint-plugin-jsdoc";
 
 export default [
-        {
+    {
         ignores: ["site/Fall2026/**"]
     },
     eslint.configs.recommended,
@@ -12,6 +12,7 @@ export default [
             ecmaVersion: 2021,
             globals: {
                 console: "readonly",
+                AbortSignal: "readonly", URL: "readonly", location: "readonly", fetch: "readonly", crypto: "readonly",
                 document: "readonly"
             }
         },
@@ -98,3 +99,4 @@ export default [
         }
     }
 ];
+

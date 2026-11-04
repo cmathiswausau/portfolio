@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "title": "Infrastructure Automation Toolkit",
+        "description": "Automation tools for streamlining system administration tasks and reducing repetitive manual work.",
+        "technologiesUsed": ["PowerShell", "Windows Server"],
+        "image": "project1.png",
+        "alt": "PowerShell automation script screenshot"
+    },
+    {
+        "id": 2,
+        "title": "Enterprise Network Modernization",
+        "description": "Infrastructure upgrades and network redesign work focused on reliability, scalability, and communication.",
+        "technologiesUsed": ["Cisco", "Fortinet", "Windows Server"],
+        "image": "project2.png",
+        "alt": "Enterprise network infrastructure"
+    },
+    {
+        "id": 3,
+        "title": "GitHub & Collaborative Development",
+        "description": "Collaborative software development using Git and GitHub workflows for source control and organized development.",
+        "technologiesUsed": ["Git", "GitHub", "C#"],
+        "image": "project3.png",
+        "alt": "GitHub project overview screenshot",
+        "link": "https://github.com/cmathiswausau"
+    }
+]
