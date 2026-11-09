@@ -84,7 +84,7 @@ function validateZooData(data) {
  * @returns {boolean} True if the test behaves as expected.
  */
 function testJson(name, jsonText, shouldPass) {
-    let errorMessage = "";
+    let errorMessage;
 
     try {
         const data = parseJson(jsonText);
@@ -117,13 +117,13 @@ function runTests(data) {
     let passed = 0;
 
     if (testJson("Valid JSON", jsonText, true)) { passed++; }
-    if (testJson("Invalid JSON format", '{"animals": [}', false)) { passed++; }
-    if (testJson("Missing required field", '{"animals":[{"id":1,"species":"Lion","age":5}]}', false)) { passed++; }
-    if (testJson("Incorrect data type", '{"animals":[{"id":1,"species":"Lion","name":"Leo","age":"five"}]}', false)) { passed++; }
+    if (testJson("Invalid JSON format", "{\"animals\": [}", false)) { passed++; }
+    if (testJson("Missing required field", "{\"animals\":[{\"id\":1,\"species\":\"Lion\",\"age\":5}]}", false)) { passed++; }
+    if (testJson("Incorrect data type", "{\"animals\":[{\"id\":1,\"species\":\"Lion\",\"name\":\"Leo\",\"age\":\"five\"}]}", false)) { passed++; }
     if (testJson("Empty object", "{}", false)) { passed++; }
     if (testJson("Null data", "null", false)) { passed++; }
-    if (testJson("Null animal field", '{"animals":[{"id":1,"species":null,"name":"Leo","age":5}]}', false)) { passed++; }
-    if (testJson("Empty animals array", '{"animals":[]}', false)) { passed++; }
+    if (testJson("Null animal field", "{\"animals\":[{\"id\":1,\"species\":null,\"name\":\"Leo\",\"age\":5}]}", false)) { passed++; }
+    if (testJson("Empty animals array", "{\"animals\":[]}", false)) { passed++; }
 
     const summary = "Tests passed: " + passed + "/8";
     console.log(summary);

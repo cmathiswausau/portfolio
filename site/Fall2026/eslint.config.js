@@ -12,7 +12,8 @@ export default [
                 document: "readonly",
                 crypto: "readonly",
                 sessionStorage: "readonly",
-                localStorage: "readonly"
+                localStorage: "readonly",
+                fetch: "readonly"
             }
         },
 
