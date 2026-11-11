@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Web APIs Lab</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Zoo Web APIs Lab</h1>
+    <p>Use the buttons below to test Geolocation, Local Storage, and Session Storage. Open Developer Tools (F12) for debugging messages.</p>
+
+    <h2>Geolocation</h2>
+    <button id="locationButton">Get Current Location</button>
+    <p id="locationResult" role="status">Location has not been requested.</p>
+
+    <h2>Local Storage - Zoo Animals</h2>
+    <button id="saveButton">Save Animals</button>
+    <button id="loadButton">Load Animals</button>
+    <button id="updateButton">Update Leo's Age</button>
+    <button id="invalidButton">Test Invalid Stored JSON</button>
+    <p id="animalResult" role="status">No storage action performed.</p>
+    <ul id="animalList"></ul>
+
+    <h2>Session Storage</h2>
+    <button id="sessionButton">Make Session Request</button>
+    <button id="resetButton">Reset Request Counter</button>
+    <p id="sessionResult" role="status">Limit: 3 requests per session.</p>
+
+    <h2>Testing and Debugging</h2>
+    <button id="testButton">Run Storage Tests</button>
+    <p id="testResult" role="status">Tests have not run.</p>
+    <p id="networkResult"></p>
+    <p>For offline testing, open Developer Tools, select Network, choose Offline, and repeat the storage tests. Geolocation may be unavailable offline.</p>
+</body>
+</html>
