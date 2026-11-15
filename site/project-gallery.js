@@ -1,4 +1,5 @@
 import { fetchProjects } from "./project-request.js";
+import { readProjectCache, writeProjectCache } from "./project-cache.js";
 
 // Text-only fallback content keeps the project page useful if the main data is
 // missing or invalid. It deliberately does not depend on image files.
@@ -69,46 +70,17 @@ function isValidProject(project) {
 }
 
 /**
- * Return valid project records or a safe fallback when the data is unusable.
+ * Require a complete catalog with valid records and unique IDs.
  * @param {unknown} data Project data supplied to the gallery.
  * Parameters: data â€” the raw project data to inspect.
- * @returns {{items: Array, message: string}} Renderable projects and a user-facing status message.
- * Returns: validated project records and a fallback message when needed.
+ * @returns {object[]} Validated project records.
  */
 function loadProjects(data) {
-    if (!Array.isArray(data)) {
-        console.error("Project data was not an array. Using fallback project content.");
-        return {
-            items: fallbackProjects,
-            message: "Project information is temporarily unavailable. Showing fallback information instead."
-        };
+    if (!Array.isArray(data) || data.length === 0 || data.length > 100 ||
+        !data.every(isValidProject) || new Set(data.map(({ id }) => id)).size !== data.length) {
+        throw new Error("Project catalog contains missing, invalid, or duplicate records.");
     }
-
-    const validProjects = data.filter((project) => isValidProject(project));
-
-    if (validProjects.length !== data.length) {
-        console.warn("Some project records were invalid and were not displayed.");
-    }
-
-    if (validProjects.length === 0) {
-        console.error("No valid project records were available. Using fallback project content.");
-        return {
-            items: fallbackProjects,
-            message: "Project information is temporarily unavailable. Showing fallback information instead."
-        };
-    }
-
-    if (validProjects.length !== data.length) {
-        return {
-            items: validProjects,
-            message: "Some project information could not be displayed. Showing the available projects."
-        };
-    }
-
-    return {
-        items: validProjects,
-        message: ""
-    };
+    return data;
 }
 
 // Part 2: Error-safe DOM manipulation and project gallery fallback display.
@@ -207,38 +179,30 @@ async function createProjectGallery() {
 
     try {
         // Collect the complete gallery off-DOM, then replace the visible content in one operation.
-        const projectResult = loadProjects(await fetchProjects());
-        const galleryContent = [];
-
-        if (projectResult.message !== "") {
-            galleryContent.push(
-                createStatusMessage(projectResult.message, "project-gallery-message")
-            );
-        }
-
-        projectResult.items.forEach((project) => {
-            galleryContent.push(createProjectCard(project));
-        });
-
-        gallery.replaceChildren(...galleryContent);
+        const projects = loadProjects(await fetchProjects());
+        gallery.replaceChildren(...projects.map(createProjectCard));
+        writeProjectCache(projects);
 
         // Console table provides a concise, structured debugging view of the data.
-        console.table(projectResult.items.map((project) => ({
+        console.table(projects.map((project) => ({
             id: project.id,
             title: project.title,
             technologies: project.technologiesUsed.join(", ")
         })));
         console.info("Project gallery rendered successfully.");
     } catch (error) {
-        console.error("Project gallery rendering failed. Displaying fallback content.", error);
+        console.warn("Live project gallery unavailable.", error);
+        const cached = readProjectCache(loadProjects);
+        const projects = cached ?? fallbackProjects;
 
         const fallbackMessage = createStatusMessage(
-            "The full project gallery could not be displayed. Showing basic fallback information.",
+            cached ? "Live projects are unavailable. Showing saved projects." :
+                "Project information is temporarily unavailable. Try again or visit GitHub.",
             "project-gallery-message project-gallery-message-error"
         );
         fallbackMessage.setAttribute("role", "alert");
 
-        const fallbackCards = fallbackProjects.map((project) => createProjectCard(project));
+        const fallbackCards = projects.map(createProjectCard);
         const retry = document.createElement("button");
         retry.type = "button";
         retry.textContent = "Retry loading projects";

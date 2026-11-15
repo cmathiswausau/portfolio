@@ -23,5 +23,13 @@
         "image": "project3.png",
         "alt": "GitHub project overview screenshot",
         "link": "https://github.com/cmathiswausau"
+    },
+    {
+        "id": 4,
+        "title": "Personal Library",
+        "description": "A team-built desktop library application. I implemented employee-side features and configured a Windows build pipeline that runs the automated tests and packages the release.",
+        "technologiesUsed": ["C#", "WPF", ".NET Framework", "SQL Server", "Azure DevOps"],
+        "image": "",
+        "alt": ""
     }
 ]

@@ -35,7 +35,8 @@ export const createSubmissionGuard = (form) => {
         if (!allow()) {
             return "Too many attempts. Please wait a minute and try again.";
         }
-        if (field.form !== form || field.value !== token) {
+        // Require the original hidden control and a single matching form value.
+        if (form.elements.namedItem(field.name) !== field || field.value !== token) {
             return "The form could not be verified. Reload this page and try again.";
         }
         return "";

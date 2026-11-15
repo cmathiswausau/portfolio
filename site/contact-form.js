@@ -18,10 +18,11 @@ function validateField(input, feedback, message) {
         return false;
     }
 
-    if (input.value.trim() === "") {
+    const value = input.value.trim();
+    if (value === "" || value.length > input.maxLength) {
         input.classList.add("input-error");
         input.setAttribute("aria-invalid", "true");
-        feedback.textContent = message;
+        feedback.textContent = value === "" ? message : `Use ${input.maxLength} characters or fewer.`;
         return false;
     }
 
@@ -56,10 +57,11 @@ function validateEmail(input, feedback) {
         return false;
     }
 
-    if (!emailPattern.test(email)) {
+    if (email.length > input.maxLength || !emailPattern.test(email)) {
         input.classList.add("input-error");
         input.setAttribute("aria-invalid", "true");
-        feedback.textContent = "Please enter a valid email address.";
+        feedback.textContent = email.length > input.maxLength ?
+            `Use ${input.maxLength} characters or fewer.` : "Please enter a valid email address.";
         return false;
     }
 
@@ -144,13 +146,25 @@ function setupContactForm() {
     });
 
     // Bind a per-page token to the local contact form and limit submission attempts.
-    const authorize = createSubmissionGuard(form);
+    let authorize;
+    try {
+        authorize = createSubmissionGuard(form);
+        form.querySelector(".submit-button").disabled = false;
+    } catch (error) {
+        console.error("Contact form token initialization failed.", error);
+        formStatus.textContent = "The form could not be verified. Use LinkedIn or try again over HTTPS.";
+        formStatus.className = "form-status form-status-error";
+    }
 
     // Validate all required fields on submit; this demo does not transmit data to a server.
     form.addEventListener("submit", (event) => {
         event.preventDefault();
+        if (!authorize) {
+            return;
+        }
 
         try {
+            form.classList.remove("form-success");
             const rejection = authorize();
             if (rejection) {
                 formStatus.textContent = rejection;

@@ -13,7 +13,7 @@ export default [
             globals: {
                 console: "readonly",
                 AbortSignal: "readonly", URL: "readonly", location: "readonly", fetch: "readonly", crypto: "readonly",
-                document: "readonly"
+                document: "readonly", localStorage: "readonly", navigator: "readonly"
             }
         },
 

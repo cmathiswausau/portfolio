@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="main.css" />
     <script type="module" src="script.js"></script>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 
 <body id="top">
@@ -40,7 +40,7 @@
                 <h2>Contact Me</h2>
 
                 <p>
-                    Have a question about my experience or a project? Use the form below to send a message.
+                    Have a question about my experience or a project? Reach me on LinkedIn or try the contact form demo.
                 </p>
 
                 <p>
@@ -58,39 +58,39 @@
                 </p>
 
                 <!-- Contact Form -->
-                <form id="contactForm" novalidate>
+                <form id="contactForm" method="post" novalidate>
                     <fieldset>
-                        <legend>Send a Message</legend>
+                        <legend>Contact Form Demo</legend>
 
                         <div class="form-field">
                             <label for="name">Name <span aria-hidden="true">*</span></label>
-                            <input type="text" id="name" name="name" autocomplete="name"
+                            <input type="text" id="name" name="name" autocomplete="name" maxlength="100"
                                 aria-describedby="nameFeedback" required />
                             <span id="nameFeedback" class="field-feedback" aria-live="polite"></span>
                         </div>
 
                         <div class="form-field">
                             <label for="email">Email <span aria-hidden="true">*</span></label>
-                            <input type="email" id="email" name="email" autocomplete="email"
+                            <input type="email" id="email" name="email" autocomplete="email" maxlength="254"
                                 aria-describedby="emailFeedback" required />
                             <span id="emailFeedback" class="field-feedback" aria-live="polite"></span>
                         </div>
 
                         <div class="form-field">
                             <label for="subject">Subject <span aria-hidden="true">*</span></label>
-                            <input type="text" id="subject" name="subject"
+                            <input type="text" id="subject" name="subject" maxlength="150"
                                 aria-describedby="subjectFeedback" required />
                             <span id="subjectFeedback" class="field-feedback" aria-live="polite"></span>
                         </div>
 
                         <div class="form-field">
                             <label for="message">Message <span aria-hidden="true">*</span></label>
-                            <textarea id="message" name="message" rows="7"
+                            <textarea id="message" name="message" rows="7" maxlength="2000"
                                 aria-describedby="messageFeedback" required></textarea>
                             <span id="messageFeedback" class="field-feedback" aria-live="polite"></span>
                         </div>
 
-                        <button type="submit" class="submit-button">Send Message</button>
+                        <button type="submit" class="submit-button" disabled>Validate Message</button>
                         <p id="formStatus" class="form-status" aria-live="polite"></p>
                     </fieldset>
                 </form>
@@ -100,6 +100,11 @@
             <aside>
                 <h2>Status</h2>
                 <p class="asideText">Available for opportunities</p>
+                <h2>Location</h2>
+                <p>Wausau, Wisconsin</p>
+                <button id="locateVisitor" type="button">Check distance to Wausau</button>
+                <p>Your browser will ask for permission. This site uses your location only to calculate the distance on this page.</p>
+                <p id="locationStatus" role="status"></p>
             </aside>
         </section>
 

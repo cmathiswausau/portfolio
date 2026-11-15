@@ -1,5 +1,6 @@
 import { createProjectGallery } from "./project-gallery.js";
 import { setupContactForm } from "./contact-form.js";
+import { setupContactLocation } from "./contact-location.js";
 
 /**
  * Set up the responsive navigation button with guarded DOM access.
@@ -38,6 +39,12 @@ async function initializePortfolio() {
         setupContactForm();
     } catch (error) {
         console.error("Contact form initialization failed.", error);
+    }
+
+    try {
+        setupContactLocation();
+    } catch (error) {
+        console.error("Contact location initialization failed.", error);
     }
 
     try {
